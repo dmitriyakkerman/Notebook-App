@@ -1,0 +1,37 @@
+@import "menu-top";
+@import "menu-mid";
+@import "menu-bottom";
+
+.notebook {
+
+  &-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100vh;
+    background: $sidebar-bg;
+    color: $sidebar-color;
+  }
+
+  &-time {
+    border-top: solid #4b4b4b 1px;
+    padding: 20px;
+    margin-top: auto;
+    text-align: center;
+  }
+
+  &__menu-top {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  &__menu-mid {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__menu-bottom {
+    margin-top: 25px;
+  }
+}

@@ -1,0 +1,40 @@
+.menu-top {
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 20px;
+    border: none;
+    border-radius: 10px;
+    background: #2d2d2d;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+      background: #6b6b6b;
+    }
+
+    i {
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+    }
+
+    &:first-child {
+
+      i {
+        background-image: url("../../assets/img/plus.svg");
+      }
+    }
+
+    &:nth-child(2) {
+
+      i {
+        background-image: url("../../assets/img/night.svg");
+      }
+    }
+  }
+}

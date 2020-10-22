@@ -1,0 +1,54 @@
+.menu-mid {
+
+  > li {
+
+    &.active {
+      background: #2d2d2d;
+    }
+
+    > a {
+      position: relative;
+      display: block;
+      padding: 10px 20px 10px 50px;
+      color: $sidebar-color;
+      text-decoration: none;
+      transition: all .3s ease;
+
+      &:hover {
+        background: #2d2d2d;
+      }
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+        content: '';
+      }
+    }
+
+    &:first-child {
+
+      > a {
+
+        &:before {
+          background-image: url("../../assets/img/notes.svg");
+        }
+      }
+    }
+
+    &:nth-child(2) {
+
+      > a {
+
+        &:before {
+          background-image: url("../../assets/img/trash.svg");
+        }
+      }
+    }
+  }
+}
