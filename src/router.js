@@ -8,7 +8,7 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            component: () => import('./views/Notes.vue')
+            component: () => import('./views/Content.vue')
         },
         {
             path: '/note/:id',

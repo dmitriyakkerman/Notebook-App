@@ -9,10 +9,10 @@
 
 <script>
 
-    import MenuTop from "./MenuTop/MenuTop";
-    import MenuMid from "./MenuMid/MenuMid";
-    import MenuBottom from "./MenuBottom/MenuBottom";
-    import TimeBar from "./TimeBar/TimeBar";
+    import MenuTop from "./NavTop/NavTop";
+    import MenuMid from "./NavBottom/NavBottom";
+    import MenuBottom from "./Categories/Categories";
+    import TimeBar from "./Time/Time";
 
     export default {
         components: {

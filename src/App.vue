@@ -1,23 +1,36 @@
 <template>
-  <div id="app" class="notebook">
+  <div id="app" class="notebook" :class="{'dark-theme': darkTheme}">
 
     <div class="notebook__container">
       <Sidebar></Sidebar>
+      <Notesbar></Notesbar>
       <div class="notebook-content">
         <router-view></router-view>
       </div>
     </div>
+
+    <Popup></Popup>
+
   </div>
 </template>
 
 <script>
 
 import Sidebar from "./components/Sidebar/Sidebar";
+import Notesbar from "./components/Notesbar/Notesbar";
+import Popup from "./components/Popup";
+
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    Sidebar
+    Sidebar,
+    Notesbar,
+    Popup
+  },
+  computed: {
+    ...mapGetters(['darkTheme'])
   }
 }
 
@@ -26,18 +39,5 @@ export default {
 <style lang="scss">
 
   @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-  .notebook {
-    font-family: 'Roboto', sans-serif;
-
-    &__container {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &-content {
-      background: rgba(0,0,0,0.06);
-    }
-  }
 
 </style>

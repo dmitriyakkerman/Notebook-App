@@ -42,5 +42,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "resolutions": { "eslint-loader": "2.1.2" }
 }

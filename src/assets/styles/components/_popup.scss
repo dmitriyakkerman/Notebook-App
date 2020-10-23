@@ -1,0 +1,61 @@
+.popup {
+
+  &__container {
+    padding: 50px;
+    background: #6d6d6d;
+    box-shadow: 2px 6px 24px -8px rgba(0,0,0,0.75);
+  }
+
+  &__title {
+    color: #fff;
+    text-align: center;
+  }
+
+  &-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__title,
+    &__text,
+    &__select {
+      border: none;
+      outline: none;
+    }
+
+    &__title,
+    &__text {
+      display: block;
+      padding-left: 10px;
+      margin-bottom: 15px !important;
+    }
+
+    &__title,
+    &__select {
+      width: 48%;
+      height: 40px;
+      box-sizing: border-box;
+    }
+
+    &__text {
+      width: 100%;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    &__select {
+      padding: 0 10px;
+    }
+
+    &__submit {
+      padding: 5px 30px;
+      margin: 0 auto;
+      background: #fff;
+      border: none;
+      outline: none;
+    }
+  }
+
+
+}

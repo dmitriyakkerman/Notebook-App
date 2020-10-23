@@ -1,4 +1,35 @@
 body {
   padding: 0;
   margin: 0;
+  background: rgba(0,0,0,0.06);
+}
+
+.notebook {
+  font-family: 'Roboto', sans-serif;
+
+  &__container {
+    display: flex;
+    height: 100vh;
+  }
+
+  &.dark-theme {
+    transition: all .3s ease;
+
+    .notes {
+      color: #fff;
+    }
+
+    .notes-bar {
+      background: rgba(52, 52, 52, 0.89);
+
+      .notes-link {
+        color: #fff;
+      }
+    }
+
+    .notebook-content {
+      background: #4b4b4b;
+      color: #fff;
+    }
+  }
 }

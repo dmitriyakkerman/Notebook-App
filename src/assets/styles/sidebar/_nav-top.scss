@@ -1,4 +1,7 @@
-.menu-top {
+.nav-top {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 
   &__btn {
     display: flex;
@@ -9,6 +12,7 @@
     margin: 0 20px;
     border: none;
     border-radius: 10px;
+    outline: none;
     background: #2d2d2d;
     cursor: pointer;
     transition: all .3s ease;
