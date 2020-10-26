@@ -1,56 +1,34 @@
-.nav-bottom {
-  list-style: none;
-  padding: 0;
+.nav-nottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: solid #4b4b4b 1px;
+  padding: 20px;
+  margin-top: auto;
+  text-align: center;
 
-  &__item {
-
-    &.active {
-      background: #2d2d2d;
-    }
-
-    &:first-child {
-
-      .nav-bottom__link {
-
-        &:before {
-          background-image: url("../../assets/img/notes.svg");
-        }
-      }
-    }
-
-    &:nth-child(2) {
-
-      .nav-bottom__link {
-
-        &:before {
-          background-image: url("../../assets/img/trash.svg");
-        }
-      }
-    }
-  }
-
-  &__link {
-    position: relative;
-    display: block;
-    padding: 10px 20px 10px 50px;
-    color: $sidebar-color;
-    text-decoration: none;
+  &__theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background: #2d2d2d;
+    cursor: pointer;
     transition: all .3s ease;
 
     &:hover {
-      background: #2d2d2d;
+      background: #6b6b6b;
     }
 
-    &:before {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
+    i {
       width: 20px;
       height: 20px;
-      background-size: contain;
-      background-position: center;
-      content: '';
+      background-image: url("../../assets/img/night.svg");
+      background-size: cover;
     }
   }
 }

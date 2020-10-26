@@ -2,10 +2,10 @@ export default {
     state: {
         categories: [
             {
-                id: 3, title: 'Personal', url: '/personal'
+                id: 3, title: 'Personal'
             },
             {
-                id: 4, title: 'Work', url: '/work'
+                id: 4, title: 'Work'
             }
         ]
     },

@@ -1,25 +1,22 @@
 <template>
     <div class="notebook-sidebar">
         <MenuTop></MenuTop>
-        <MenuMid></MenuMid>
-        <MenuBottom></MenuBottom>
-        <TimeBar></TimeBar>
+        <MainNav></MainNav>
+        <NavBottom></NavBottom>
     </div>
 </template>
 
 <script>
 
     import MenuTop from "./NavTop/NavTop";
-    import MenuMid from "./NavBottom/NavBottom";
-    import MenuBottom from "./Categories/Categories";
-    import TimeBar from "./Time/Time";
+    import MainNav from "./MainNav/MainNav";
+    import NavBottom from "./NavBottom/NavBottom";
 
     export default {
         components: {
             MenuTop,
-            MenuMid,
-            MenuBottom,
-            TimeBar
+            MainNav,
+            NavBottom
         }
     }
 

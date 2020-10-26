@@ -1,9 +1,9 @@
 <template>
     <div class="nav-top">
-        <button class="nav-top__btn" ref="jPopup">
+        <button class="nav-top__btn j-popup">
             <i></i>
         </button>
-        <button class="nav-top__btn" @click="toggleTheme">
+        <button class="nav-top__btn j-popup">
             <i></i>
         </button>
     </div>
@@ -11,21 +11,13 @@
 
 <script>
 
-    import {mapMutations} from 'vuex'
-
     export default {
         mounted() {
             new window.ArmUI.Popup({
                 el: '.popup',
-                openers: this.$refs.jPopup,
+                openers: '.j-popup',
                 closable: true
             });
-        },
-        methods: {
-            ...mapMutations(['toggleThemeState']),
-            toggleTheme() {
-                this.toggleThemeState()
-            }
         }
     }
 

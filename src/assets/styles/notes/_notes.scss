@@ -1,77 +1,102 @@
 .notes {
-  display: flex;
-  height: 100%;
 
-  &-bar {
-    width: 350px;
-    padding-top: 20px;
-    border-right: solid rgba(0, 0, 0, 0.15) 2px;
-    background: rgba(163, 167, 180, 0.2);
-    transition: all .3s ease;
+  &__container {
+    margin-top: 25px;
   }
 
-  &-search {
-    display: block;
-    width: 90%;
-    height: 40px;
-    padding-left: 10px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-    outline: none;
-  }
-
-  &-list {
-    list-style: none;
-    padding: 0;
+  &__no-notes {
+    display: flex;
+    align-items: center;
   }
 
   &-item {
-    border-bottom: solid rgba(0, 0, 0, 0.09) 1px;
-  }
-
-  &-link {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: #000;
-
-    &.active,
-    &:hover {
-      background: rgba(0,105,226,0.74);
-      color: #fff;
-    }
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 
     &__title,
+    &__text,
     &__category {
-      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__title {
+      width: 20%;
+    }
+
+    &__text {
+      width: 30%;
+    }
+
+    &__nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 30%;
     }
 
     &__category {
       position: relative;
-      padding-left: 20px;
-      margin-top: 5px;
-      font-size: 12px;
+      width: 50%;
+      padding-left: 40px;
 
       &:before {
         position: absolute;
-        top: 50%;
+        top: -2px;
         left: 0;
-        transform: translateY(-50%);
-        width: 10px;
-        height: 10px;
+        width: 25px;
+        height: 25px;
         background-image: url("../../assets/img/folder.svg");
         background-size: contain;
-        background-position: center;
+        background-repeat: no-repeat;
         content: '';
       }
     }
-  }
 
-  &-current {
-    width: 80%;
-    padding-top: 25px;
-    transition: all .3s ease;
+    &__buttons {
+      width: 30%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__favourite {
+      width: 25px;
+      height: 25px;
+      border: none;
+      outline: none;
+      background: none;
+      background-image: url("../../assets/img/star.svg");
+      background-size: contain;
+      cursor: pointer;
+      transition: all .3s ease;
+
+      &.active {
+        background-image: url("../../assets/img/star-active.svg");
+      }
+    }
+
+    &__look {
+      display: block;
+      width: 25px;
+      height: 25px;
+      background: none;
+      background-image: url("../../assets/img/look.svg");
+      background-size: contain;
+    }
+
+    &__remove {
+      width: 25px;
+      height: 25px;
+      border: none;
+      outline: none;
+      background: none;
+      background-image: url("../../assets/img/trash.svg");
+      background-size: contain;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
   }
 }

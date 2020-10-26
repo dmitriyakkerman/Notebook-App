@@ -3,7 +3,6 @@
 
     <div class="notebook__container">
       <Sidebar></Sidebar>
-      <Notesbar></Notesbar>
       <div class="notebook-content">
         <router-view></router-view>
       </div>
@@ -17,7 +16,6 @@
 <script>
 
 import Sidebar from "./components/Sidebar/Sidebar";
-import Notesbar from "./components/Notesbar/Notesbar";
 import Popup from "./components/Popup";
 
 import {mapGetters} from 'vuex'
@@ -26,7 +24,6 @@ export default {
   name: 'App',
   components: {
     Sidebar,
-    Notesbar,
     Popup
   },
   computed: {

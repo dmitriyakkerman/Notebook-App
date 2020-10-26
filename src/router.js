@@ -8,11 +8,19 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            component: () => import('./views/Content.vue')
+            component: () => import('./views/About.vue')
         },
         {
-            path: '/note/:id',
+            path: '/notes',
+            component: () => import('./views/Notes.vue')
+        },
+        {
+            path: '/notes/:id',
             component: () => import('./views/Note.vue')
+        },
+        {
+            path: '/favourites',
+            component: () => import('./views/Favourites.vue')
         },
         {
             path: '/trash',

@@ -1,18 +1,43 @@
 <template>
-    <ul class="nav-bottom">
-        <router-link tag="li" to="/" active-class="active" exact="" class="nav-bottom__item">
-            <a href="" class="nav-bottom__link">All Notes</a>
-        </router-link>
-        <router-link tag="li" to="/trash" active-class="active" class="nav-bottom__item">
-            <a href="" class="nav-bottom__link">Trash</a>
-        </router-link>
-    </ul>
+    <div class="nav-nottom">
+        <button class="nav-nottom__theme" @click="toggleTheme">
+            <i></i>
+        </button>
+        <div class="nav-nottom__time">
+            <span>{{ date | toLocaleTimeString }}</span>
+        </div>
+    </div>
 </template>
 
 <script>
 
-    export default {
+    import {mapMutations} from 'vuex'
 
+    export default {
+        data() {
+            return {
+                date: new Date()
+            }
+        },
+        filters: {
+            toLocaleDateString(value) {
+              return value.toLocaleDateString();
+            },
+            toLocaleTimeString(value) {
+                return value.toLocaleTimeString();
+            }
+        },
+        methods: {
+            ...mapMutations(['toggleThemeState']),
+            toggleTheme() {
+                this.toggleThemeState()
+            }
+        },
+        mounted() {
+            setInterval(() => {
+                this.date = new Date()
+            }, 1000)
+        }
     }
 
 </script>

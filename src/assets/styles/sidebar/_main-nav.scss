@@ -1,0 +1,86 @@
+.main-nav {
+  list-style: none;
+  padding: 0;
+
+  &__item {
+
+    &.active {
+      background: #2d2d2d;
+    }
+
+    &:first-child {
+
+      .main-nav__link {
+
+        &:before {
+          background-image: url("../../assets/img/info.svg");
+        }
+      }
+    }
+
+    &:nth-child(2) {
+
+      .main-nav__link {
+
+        &:before {
+          background-image: url("../../assets/img/notes.svg");
+        }
+      }
+    }
+
+    &:nth-child(3) {
+
+      .main-nav__link {
+
+        &:before {
+          background-image: url("../../assets/img/folder.svg");
+        }
+      }
+    }
+
+    &:nth-child(4) {
+
+      .main-nav__link {
+
+        &:before {
+          background-image: url("../../assets/img/star-active.svg");
+        }
+      }
+    }
+
+    &:last-child {
+
+      .main-nav__link {
+
+        &:before {
+          background-image: url("../../assets/img/trash.svg");
+        }
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 10px 20px 10px 50px;
+    color: $sidebar-color;
+    text-decoration: none;
+    transition: all .3s ease;
+
+    &:hover {
+      background: #2d2d2d;
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-position: center;
+      content: '';
+    }
+  }
+}
