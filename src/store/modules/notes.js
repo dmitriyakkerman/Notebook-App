@@ -11,7 +11,8 @@ export default {
                     id: 4, title: 'Work'
                 }
             }
-        ]
+        ],
+        trash: []
     },
     getters: {
         notes(state) {
@@ -28,6 +29,9 @@ export default {
             return state.notes.filter(function (note) {
                 return note.favourite
             })
+        },
+        trash(state) {
+            return state.trash
         }
     },
     actions: {
@@ -39,6 +43,9 @@ export default {
         },
         deleteNote({commit}, id) {
             commit('removeNote', id)
+        },
+        moveToTrash({commit}, id) {
+            commit('trashNote', id)
         }
     },
     mutations: {
@@ -58,6 +65,13 @@ export default {
             state.notes = state.notes.filter(function (note) {
                 return note.id !== id;
             })
+        },
+        trashNote(state, id) {
+            let note = state.notes.find(function (note) {
+                return note.id === id
+            });
+
+            state.trash.push(note)
         }
     }
 }

@@ -8,7 +8,7 @@
                </select>
                <input type="text" class="notes-bar__search" placeholder="Search note" v-model="noteToSearch">
            </div>
-           <button class="notes-bar__btn" ref="jPopup">
+           <button class="notes-bar__btn j-popup">
                <i></i>
            </button>
        </div>
@@ -18,11 +18,11 @@
                    <div class="notes-item__title">{{ note.title }}</div>
                    <div class="notes-item__text">{{ note.text }}</div>
                    <div class="notes-item__nav">
-                       <router-link :to="'/categories/' + note.category.id" class="notes-item__category">{{ note.category.title }}</router-link>
+                       <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
                        <div class="notes-item__buttons">
                            <button class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
                            <router-link :to="'/notes/' + note.id" class="notes-item__look" title="View note"></router-link>
-                           <button class="notes-item__remove" @click.prevent="removeNote(note.id)"></button>
+                           <button class="notes-item__remove" title="Remove note" @click.prevent="removeNote(note.id)"></button>
                        </div>
                    </div>
                </div>
@@ -66,12 +66,13 @@
             }
         },
         methods: {
-            ...mapActions(['updateFavouriteNote', 'deleteNote']),
+            ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveToTrash']),
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
             },
             removeNote(id) {
-                this.deleteNote(id)
+                this.moveToTrash(id);
+                this.deleteNote(id);
             }
         },
     }

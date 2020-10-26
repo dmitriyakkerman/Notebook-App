@@ -12,7 +12,12 @@
   &-item {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
     margin-bottom: 20px;
+
+    &:not(:last-child) {
+      border-bottom: solid #cecece 1px;
+    }
 
     &__title,
     &__text,
@@ -41,6 +46,7 @@
       position: relative;
       width: 50%;
       padding-left: 40px;
+      text-decoration: none;
 
       &:before {
         position: absolute;

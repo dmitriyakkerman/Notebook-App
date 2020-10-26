@@ -19,6 +19,10 @@ export default new VueRouter({
             component: () => import('./views/Note.vue')
         },
         {
+            path: '/categories',
+            component: () => import('./views/Categories.vue')
+        },
+        {
             path: '/favourites',
             component: () => import('./views/Favourites.vue')
         },
