@@ -1,7 +1,7 @@
 <template>
     <div class="trash">
         <h1 class="title">Trash</h1>
-        <Trash :trash="trash"></Trash>
+        <Trash :notesTrash="notesTrash" :categoriesTrash="categoriesTrash"></Trash>
     </div>
 </template>
 
@@ -15,7 +15,7 @@
           Trash
         },
         computed: {
-            ...mapGetters(['trash'])
+            ...mapGetters(['notesTrash', 'categoriesTrash'])
         }
     }
 

@@ -28,13 +28,6 @@ export default {
   },
   computed: {
     ...mapGetters(['darkTheme'])
-  },
-  mounted() {
-    new window.ArmUI.Popup({
-      el: '.popup',
-      openers: '.j-popup',
-      closable: true
-    });
   }
 }
 

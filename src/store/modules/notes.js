@@ -12,7 +12,7 @@ export default {
                 }
             }
         ],
-        trash: []
+        notesTrash: []
     },
     getters: {
         notes(state) {
@@ -37,8 +37,8 @@ export default {
                 return note.favourite
             })
         },
-        trash(state) {
-            return state.trash
+        notesTrash(state) {
+            return state.notesTrash
         }
     },
     actions: {
@@ -51,14 +51,14 @@ export default {
         deleteNote({commit}, id) {
             commit('removeNote', id)
         },
-        moveToTrash({commit}, id) {
+        moveNoteToTrash({commit}, id) {
             commit('trashNote', id)
         },
-        moveFromTrash({commit}, note) {
-            commit('moveFromTrash', note)
+        moveNoteFromTrash({commit}, note) {
+            commit('moveNoteFromTrash', note)
         },
-        restoreNote({commit}, note) {
-            commit('restoreNote', note)
+        restoreNotesByCategory({commit}, category) {
+            commit('restoreNotesByCategory', category)
         }
     },
     mutations: {
@@ -84,12 +84,15 @@ export default {
                 return note.id === id
             });
 
-            state.trash.push(note)
+            state.notesTrash.push(note)
         },
-        moveFromTrash(state, note) {
-          state.trash = state.trash.filter(function (item) {
+        moveNoteFromTrash(state, note) {
+          state.notesTrash = state.notesTrash.filter(function (item) {
               if(item.id !== note.id) {
                   return item
+              }
+              else {
+                  state.notes.push(note)
               }
           })
         },
@@ -98,10 +101,20 @@ export default {
                if(note.category.id !== id) {
                    return note
                }
+               else {
+                   state.notesTrash.push(note)
+               }
             })
         },
-        restoreNote(state, note) {
-            state.notes.push(note)
-        }
+        restoreNotesByCategory(state, category) {
+            state.notesTrash = state.notesTrash.filter(function (note) {
+                if(note.category.id !== category.id) {
+                    return note
+                }
+                else {
+                    state.notes.push(note)
+                }
+            })
+        },
     }
 }

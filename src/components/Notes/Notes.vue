@@ -66,15 +66,22 @@
             }
         },
         methods: {
-            ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveToTrash']),
+            ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveNoteToTrash']),
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
             },
             removeNote(id) {
-                this.moveToTrash(id);
+                this.moveNoteToTrash(id);
                 this.deleteNote(id);
             }
         },
+        mounted() {
+            new window.ArmUI.Popup({
+                el: '.popup',
+                openers: '.j-popup',
+                closable: true
+            });
+        }
     }
 
 </script>

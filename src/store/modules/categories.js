@@ -7,7 +7,8 @@ export default {
             {
                 id: 4, title: 'Work'
             }
-        ]
+        ],
+        categoriesTrash: []
     },
     getters: {
         categories(state) {
@@ -19,6 +20,9 @@ export default {
                     return category.id === id
                 })
             }
+        },
+        categoriesTrash(state) {
+            return state.categoriesTrash
         }
     },
     actions: {
@@ -27,6 +31,12 @@ export default {
         },
         deleteCategory({commit}, id) {
             commit('removeCategory', id)
+        },
+        moveCategoryToTrash({commit}, id) {
+            commit('trashCategory', id)
+        },
+        moveCategoryFromTrash({commit}, note) {
+            commit('moveCategoryFromTrash', note)
         }
     },
     mutations: {
@@ -36,6 +46,23 @@ export default {
         removeCategory(state, id) {
             state.categories = state.categories.filter(function (category) {
                 return category.id !== id
+            })
+        },
+        trashCategory(state, id) {
+            let category = state.categories.find(function (category) {
+                return category.id === id
+            });
+
+            state.categoriesTrash.push(category)
+        },
+        moveCategoryFromTrash(state, category) {
+            state.categoriesTrash = state.categoriesTrash.filter(function (item) {
+                if(item.id !== category.id) {
+                    return item
+                }
+                else {
+                    state.categories.push(category)
+                }
             })
         }
     }

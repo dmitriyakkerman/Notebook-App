@@ -35,12 +35,12 @@
            }
         },
         methods: {
-            ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveToTrash']),
+            ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveNoteToTrash']),
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
             },
             removeNote(id) {
-                this.moveToTrash(id);
+                this.moveNoteToTrash(id);
                 this.deleteNote(id);
             }
         }
