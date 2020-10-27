@@ -37,6 +37,9 @@ export default {
         },
         moveCategoryFromTrash({commit}, note) {
             commit('moveCategoryFromTrash', note)
+        },
+        restoreCategoryByNote({commit}, note) {
+            commit('restoreCategoryByNote', note)
         }
     },
     mutations: {
@@ -64,6 +67,18 @@ export default {
                     state.categories.push(category)
                 }
             })
+        },
+        restoreCategoryByNote(state, note) {
+            if(!state.categories.length) {
+                state.categoriesTrash = state.categoriesTrash.filter(function (category) {
+                    if(category.id !== note.category.id) {
+                        return category
+                    }
+                    else {
+                        state.categories.push(category)
+                    }
+                })
+            }
         }
     }
 }

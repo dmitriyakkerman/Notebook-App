@@ -1,5 +1,6 @@
 <template>
     <div class="trash">
+        <h2>Notes</h2>
         <div v-if="notesTrash.length || categoriesTrash.length">
             <div class="trash__container">
                 <div v-if="notesTrash.length" class="trash-bar">
@@ -18,6 +19,7 @@
                     </div>
                 </div>
             </div>
+            <h2>Categories</h2>
             <div class="trash__container">
                 <div class="trash-item" v-for="category in categoriesTrash" :key="category.id">
                     <div class="trash-item__title">{{ category.title }}</div>
@@ -48,7 +50,7 @@
             }
         },
         methods: {
-            ...mapActions(['moveNoteFromTrash', 'moveCategoryFromTrash', 'restoreNotesByCategory']),
+            ...mapActions(['moveNoteFromTrash', 'moveCategoryFromTrash', 'restoreCategoryByNote', 'restoreNotesByCategory']),
             filteredNotes(notes) {
                 let that = this;
                 let filteredNotes;
@@ -65,11 +67,12 @@
                 return filteredNotes;
             },
             restoreN(note) {
+                this.restoreCategoryByNote(note);
                 this.moveNoteFromTrash(note);
             },
             restoreC(category) {
-                this.restoreNotesByCategory(category)
-                this.moveCategoryFromTrash(category)
+                this.restoreNotesByCategory(category);
+                this.moveCategoryFromTrash(category);
             }
         }
     }

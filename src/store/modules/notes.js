@@ -115,6 +115,6 @@ export default {
                     state.notes.push(note)
                 }
             })
-        },
+        }
     }
 }
