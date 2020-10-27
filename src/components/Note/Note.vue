@@ -7,7 +7,7 @@
                 <button class="note__remove" title="Remove Note" @click="$emit('removeNote', note.id)"></button>
             </div>
         </div>
-        <div class="note__text">{{ note.text }}</div>
+        <div class="note__text" v-html="note.text"></div>
     </div>
 </template>
 

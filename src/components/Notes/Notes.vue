@@ -16,7 +16,7 @@
            <div v-if="filteredNotes.length">
                <div class="notes-item" v-for="note in filteredNotes" :key="note.id">
                    <div class="notes-item__title">{{ note.title }}</div>
-                   <div class="notes-item__text">{{ note.text }}</div>
+                   <div class="notes-item__text" v-html="note.text"></div>
                    <div class="notes-item__nav">
                        <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
                        <div class="notes-item__buttons">
@@ -74,13 +74,6 @@
                 this.moveNoteToTrash(id);
                 this.deleteNote(id);
             }
-        },
-        mounted() {
-            new window.ArmUI.Popup({
-                el: '.popup',
-                openers: '.j-popup',
-                closable: true
-            });
         }
     }
 

@@ -12,6 +12,7 @@
   &-item {
     display: flex;
     justify-content: space-between;
+    max-height: 25px;
     padding-bottom: 10px;
     margin-bottom: 20px;
 
@@ -33,6 +34,14 @@
 
     &__text {
       width: 30%;
+
+      > * {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        font-size: 16px !important;
+        font-weight: normal;
+      }
     }
 
     &__nav {

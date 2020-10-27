@@ -54,13 +54,6 @@
                 this.deleteCategory(id);
                 this.removeNotesByCategory(id);
             }
-        },
-        mounted() {
-            new window.ArmUI.Popup({
-                el: '.popup',
-                openers: '.j-popup',
-                closable: true
-            });
         }
     }
 

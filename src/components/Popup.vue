@@ -17,6 +17,7 @@
 
 <script>
 
+    import marked from 'marked'
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
@@ -51,7 +52,7 @@
                     let newNote = {
                         id: Date.now(),
                         title: that.note.title,
-                        text: that.note.text,
+                        text: marked(that.note.text),
                         favourite: false,
                         category: {
                             id: that.findCategoryId,
@@ -61,7 +62,8 @@
 
                     that.postNote(newNote);
                     that.selected = 'default';
-                    that.note.title = that.note.text = ''
+                    that.note.title = that.note.text = '';
+                    that.$router.push('/notes');
                 }
             }
         }
