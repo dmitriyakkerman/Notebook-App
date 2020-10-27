@@ -23,8 +23,12 @@ export default new VueRouter({
             component: () => import('./views/Categories.vue')
         },
         {
-            path: '/favourites',
-            component: () => import('./views/Favourites.vue')
+            path: '/categories/:id',
+            component: () => import('./views/Category.vue')
+        },
+        {
+            path: '/favourite',
+            component: () => import('./views/Favourite.vue')
         },
         {
             path: '/trash',

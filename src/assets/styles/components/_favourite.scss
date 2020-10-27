@@ -1,12 +1,22 @@
-.notes {
+.favourite {
 
   &__container {
     margin-top: 25px;
   }
 
-  &__no-notes {
+  &-bar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding-bottom: 15px;
+    border-bottom: solid #d0d0d0 2px;
+
+    &__filter {
+      width: 200px;
+      height: 30px;
+      border: none;
+      outline: none;
+    }
   }
 
   &-item {

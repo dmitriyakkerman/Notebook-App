@@ -1,0 +1,40 @@
+.categories-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: solid #d0d0d0 2px;
+
+  &__search {
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background: #d2d2d2;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+      background: #c4c4c4;
+    }
+
+    i {
+      width: 20px;
+      height: 20px;
+      background-image: url("../../assets/img/add-category.svg");
+      background-size: cover;
+    }
+  }
+}

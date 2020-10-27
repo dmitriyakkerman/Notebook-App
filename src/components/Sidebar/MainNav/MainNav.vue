@@ -9,7 +9,7 @@
         <router-link tag="li" to="/categories" active-class="active" exact="" class="main-nav__item">
             <a href="" class="main-nav__link">Categories</a>
         </router-link>
-        <router-link tag="li" to="/favourites" active-class="active" exact="" class="main-nav__item">
+        <router-link tag="li" to="/favourite" active-class="active" exact="" class="main-nav__item">
             <a href="" class="main-nav__link">Favourites</a>
         </router-link>
         <router-link tag="li" to="/trash" active-class="active" class="main-nav__item">

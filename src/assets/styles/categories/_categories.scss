@@ -1,10 +1,10 @@
-.notes {
+.categories {
 
   &__container {
     margin-top: 25px;
   }
 
-  &__no-notes {
+  &__no-categories {
     display: flex;
     align-items: center;
   }
@@ -19,25 +19,16 @@
       border-bottom: solid #cecece 1px;
     }
 
-    &__title,
-    &__text,
-    &__category {
+    &__title {
+      width: 20%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    &__title {
-      width: 20%;
-    }
-
-    &__text {
-      width: 30%;
-    }
-
     &__nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       width: 30%;
     }
@@ -64,27 +55,11 @@
     &__buttons {
       width: 30%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-end;;
       align-items: center;
 
       > * {
         margin-left: 20px;
-      }
-    }
-
-    &__favourite {
-      width: 25px;
-      height: 25px;
-      border: none;
-      outline: none;
-      background: none;
-      background-image: url("../../assets/img/star.svg");
-      background-size: contain;
-      cursor: pointer;
-      transition: all .3s ease;
-
-      &.active {
-        background-image: url("../../assets/img/star-active.svg");
       }
     }
 

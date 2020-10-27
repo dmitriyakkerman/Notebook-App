@@ -30,7 +30,18 @@
             }
         },
         computed: {
-            ...mapGetters(['categories'])
+            ...mapGetters(['categories']),
+            findCategoryId() {
+                let that = this;
+                let id;
+                that.categories.find(function (category) {
+                    if (category.title === that.selected) {
+                        id = category.id
+                    }
+                })
+
+                return id;
+            }
         },
         methods: {
             ...mapActions(['postNote']),
@@ -41,10 +52,15 @@
                         id: Date.now(),
                         title: that.note.title,
                         text: that.note.text,
-                        category: that.selected
+                        favourite: false,
+                        category: {
+                            id: that.findCategoryId,
+                            title: that.selected
+                        }
                     };
 
                     that.postNote(newNote);
+                    that.selected = 'default';
                     that.note.title = that.note.text = ''
                 }
             }

@@ -1,14 +1,17 @@
 <template>
-    <div>{{ categories }}</div>
+    <div class="categories">
+        <h1 class="title">My categories</h1>
+        <Categories></Categories>
+    </div>
 </template>
 
 <script>
 
-    import {mapGetters} from 'vuex'
+    import Categories from "../components/Categories/Categories";
 
     export default {
-        computed: {
-            ...mapGetters(['categories'])
+        components: {
+            Categories
         }
     }
 

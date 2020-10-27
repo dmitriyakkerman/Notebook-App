@@ -25,7 +25,14 @@ export default {
                 })
             }
         },
-        favourites(state) {
+        notesBy(state) {
+          return function (id) {
+              return state.notes.filter(function (note) {
+                  return note.category.id === id
+              })
+          }
+        },
+        favourite(state) {
             return state.notes.filter(function (note) {
                 return note.favourite
             })
@@ -46,6 +53,12 @@ export default {
         },
         moveToTrash({commit}, id) {
             commit('trashNote', id)
+        },
+        moveFromTrash({commit}, note) {
+            commit('moveFromTrash', note)
+        },
+        restoreNote({commit}, note) {
+            commit('restoreNote', note)
         }
     },
     mutations: {
@@ -72,6 +85,23 @@ export default {
             });
 
             state.trash.push(note)
+        },
+        moveFromTrash(state, note) {
+          state.trash = state.trash.filter(function (item) {
+              if(item.id !== note.id) {
+                  return item
+              }
+          })
+        },
+        removeNotesByCategory(state, id) {
+            state.notes = state.notes.filter(function (note) {
+               if(note.category.id !== id) {
+                   return note
+               }
+            })
+        },
+        restoreNote(state, note) {
+            state.notes.push(note)
         }
     }
 }

@@ -1,22 +1,67 @@
-.notes {
+.category {
 
-  &__container {
-    margin-top: 25px;
-  }
-
-  &__no-notes {
+  &-bar {
     display: flex;
     align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: solid #d0d0d0 2px;
   }
 
-  &-item {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+  &__category {
+    position: relative;
+    width: 50%;
+    padding-left: 40px;
 
-    &:not(:last-child) {
-      border-bottom: solid #cecece 1px;
+    &:before {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      background-image: url("../../assets/img/folder.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      content: '';
+    }
+  }
+
+  &__edit {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url("../../assets/img/edit.svg");
+    background-size: contain;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+
+  &__remove {
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url("../../assets/img/trash.svg");
+    background-size: contain;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+
+  &-notes {
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+
+      &:not(:last-child) {
+        border-bottom: solid #cecece 1px;
+      }
     }
 
     &__title,
@@ -37,7 +82,7 @@
 
     &__nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       width: 30%;
     }
