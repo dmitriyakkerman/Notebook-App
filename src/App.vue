@@ -28,6 +28,9 @@ export default {
   },
   computed: {
     ...mapGetters(['darkTheme'])
+  },
+  mounted() {
+    document.title = 'Notebook App'
   }
 }
 

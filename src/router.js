@@ -1,9 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Notes from "./views/Notes";
-import Categories from "./views/Categories";
-
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -15,11 +12,11 @@ export default new VueRouter({
         },
         {
             path: '/notes',
-            component: Notes
+            component: () => import('./views/Notes.vue')
         },
         {
             path: '/categories',
-            component: Categories
+            component: () => import('./views/Categories.vue')
         },
         {
             path: '/notes/:id',

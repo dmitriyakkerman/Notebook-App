@@ -1,31 +1,38 @@
 <template>
     <div class="trash">
-        <h2>Notes</h2>
         <div v-if="notesTrash.length || categoriesTrash.length">
-            <div class="trash__container">
-                <div v-if="notesTrash.length" class="trash-bar">
-                    <select class="trash-bar__filter" v-model="selectedCategory">
-                        <option value="all">All</option>
-                        <option v-for="note in notesTrash" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
-                    </select>
-                </div>
-                <div class="trash-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
-                    <div class="trash-item__title">{{ note.title }}</div>
-                    <div class="trash-item__nav">
-                        <router-link :to="'/categories/' + note.category.id" class="trash-item__category" title="Note category">{{ note.category.title }}</router-link>
-                        <div class="trash-item__buttons">
-                            <button class="trash-item__restore" title="Restore note" @click="restoreN(note)"></button>
+            <button class="trash__clean" title="Clear trash box" @click="cleanTrash">
+                <i></i>
+            </button>
+            <div v-if="notesTrash.length">
+                <h2>Notes</h2>
+                <div class="trash__container">
+                    <div class="trash-bar">
+                        <select class="trash-bar__filter" v-model="selectedCategory">
+                            <option value="all">All</option>
+                            <option v-for="note in notesTrash" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
+                        </select>
+                    </div>
+                    <div class="trash-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
+                        <div class="trash-item__title">{{ note.title }}</div>
+                        <div class="trash-item__nav">
+                            <router-link :to="'/categories/' + note.category.id" class="trash-item__category" title="Note category">{{ note.category.title }}</router-link>
+                            <div class="trash-item__buttons">
+                                <button class="trash-item__restore" title="Restore note" @click="restoreNote(note)"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <h2>Categories</h2>
-            <div class="trash__container">
-                <div class="trash-item" v-for="category in categoriesTrash" :key="category.id">
-                    <div class="trash-item__title">{{ category.title }}</div>
-                    <div class="trash-item__nav">
-                        <div class="trash-item__buttons">
-                            <button class="trash-item__restore" title="Restore note" @click="restoreC(category)"></button>
+            <div v-if="categoriesTrash.length">
+                <h2>Categories</h2>
+                <div class="trash__container">
+                    <div class="trash-item" v-for="category in categoriesTrash" :key="category.id">
+                        <div class="trash-item__title">{{ category.title }}</div>
+                        <div class="trash-item__nav">
+                            <div class="trash-item__buttons">
+                                <button class="trash-item__restore" title="Restore note" @click="restoreCategory(category)"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,7 +44,7 @@
 
 <script>
 
-    import {mapActions} from 'vuex';
+    import {mapActions, mapMutations} from 'vuex';
 
     export default {
         props: {
@@ -51,6 +58,7 @@
         },
         methods: {
             ...mapActions(['moveNoteFromTrash', 'moveCategoryFromTrash', 'restoreCategoryByNote', 'restoreNotesByCategory']),
+            ...mapMutations(['cleanNotesTrash', 'cleanCategoriesTrash']),
             filteredNotes(notes) {
                 let that = this;
                 let filteredNotes;
@@ -62,17 +70,21 @@
                     else {
                         return note.category.title === that.selectedCategory
                     }
-                })
+                });
 
                 return filteredNotes;
             },
-            restoreN(note) {
+            restoreNote(note) {
                 this.restoreCategoryByNote(note);
                 this.moveNoteFromTrash(note);
             },
-            restoreC(category) {
+            restoreCategory(category) {
                 this.restoreNotesByCategory(category);
                 this.moveCategoryFromTrash(category);
+            },
+            cleanTrash() {
+                this.cleanNotesTrash();
+                this.cleanCategoriesTrash();
             }
         }
     }

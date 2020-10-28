@@ -13,7 +13,8 @@
 
     &__filter {
       width: 200px;
-      height: 30px;
+      height: 35px;
+      box-sizing: border-box;
       border: none;
       outline: none;
     }

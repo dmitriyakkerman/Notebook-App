@@ -3,7 +3,7 @@
         <div class="note-bar">
             <div class="note__category">{{ note.category.title }}</div>
             <div class="note-nav">
-                <button class="note__edit" title="Edit note"></button>
+                <button class="note__edit j-popup" title="Edit note"></button>
                 <button class="note__remove" title="Remove Note" @click="$emit('removeNote', note.id)"></button>
             </div>
         </div>
@@ -17,7 +17,6 @@
         props: {
             note: Object
         }
-
     }
 
 </script>

@@ -1,8 +1,14 @@
 <template>
     <div class="categories">
         <div class="categories-bar">
-            <input type="text" class="categories-bar__search" placeholder="Search category" v-model="categoryToSearch">
-            <button class="categories-bar__btn j-popup">
+            <div class="categories-bar__search">
+                <input type="text" class="categories-bar__input" placeholder="Search category" v-model="categoryToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
+                <div class="lds-ripple" v-if="loading">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <button class="categories-bar__btn" @click="addCategory">
                 <i></i>
             </button>
         </div>
@@ -25,12 +31,14 @@
 
 <script>
 
+    import _ from 'lodash'
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
         data() {
             return {
-                categoryToSearch: ''
+                categoryToSearch: '',
+                loading: false
             }
         },
         computed: {
@@ -40,7 +48,7 @@
                 let filtered;
 
                 filtered = this.categories.filter(function (category) {
-                    return category.title.includes(that.categoryToSearch)
+                    return category.title.toLocaleLowerCase().includes(that.categoryToSearch.toLocaleLowerCase())
                 });
 
                 return filtered
@@ -53,6 +61,15 @@
                 this.moveCategoryToTrash(id);
                 this.deleteCategory(id);
                 this.removeNotesByCategory(id);
+            },
+            initLoading() {
+                this.loading = true
+            },
+            debounce: _.debounce(function () {
+                this.loading = false;
+            }, 300),
+            addCategory() {
+                window.popup.manualOpen();
             }
         }
     }

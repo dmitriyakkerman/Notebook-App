@@ -30,5 +30,12 @@
       background-image: url("../../assets/img/night.svg");
       background-size: cover;
     }
+
+    &.dark {
+
+      i {
+        background-image: url("../../assets/img/sun.svg");
+      }
+    }
   }
 }

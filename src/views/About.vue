@@ -2,7 +2,52 @@
     <div class="about">
         <h1 class="title">Notebook App</h1>
         <div class="about__text">
-            Simple notebook app
+            <div>
+                Open-source notes app. Check out the project on <a href="https://github.com/dmitriyakkerman/Notebook-App">https://github.com/dmitriyakkerman/Notebook-App</a>
+            </div>
+            <hr>
+            <h2>Pages:</h2>
+            <ul>
+                <li>About</li>
+                <li>Notes</li>
+                <li>Categories</li>
+                <li>Favourite</li>
+                <li>Trash</li>
+            </ul>
+            <h2>Features</h2>
+            <hr>
+            <h3>Notes</h3>
+            <ul>
+                <li>Adding/Deleting</li>
+                <li>Editing</li>
+                <li>Searching by letters combination</li>
+                <li>Filtering by category</li>
+                <li>Adding/deleting to/from favourite</li>
+            </ul>
+            <h3>Categories</h3>
+            <ul>
+                <li>Adding/Deleting</li>
+                <li>Editing</li>
+                <li>Searching</li>
+            </ul>
+            <h3>Favourite</h3>
+            <ul>
+                <li>Filtering notes by category</li>
+                <li>Removing notes and categories from favourite</li>
+            </ul>
+            <h3>Trash</h3>
+            <ul>
+                <li>Filtering notes by category</li>
+                <li>Restoring notes and categories</li>
+                <li>Cleaning trash box</li>
+            </ul>
+            <hr>
+            <h2>Other</h2>
+            <ul>
+                <li><a href="https://marked.js.org/demo/">Marked</a> markdown support</li>
+                <li>Light/dark theme</li>
+                <li><a href="https://github.com/dmitriyakkerman/arm-ui">Arm-UI</a> component library</li>
+            </ul>
         </div>
     </div>
 </template>

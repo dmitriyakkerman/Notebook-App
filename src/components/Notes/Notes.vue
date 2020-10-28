@@ -6,9 +6,10 @@
                    <option value="all">All</option>
                    <option v-for="category in categories" :key="category.id" :value="category.title">{{ category.title }}</option>
                </select>
-               <input type="text" class="notes-bar__search" placeholder="Search note" v-model="noteToSearch">
+               <input type="text" class="notes-bar__search" placeholder="Search note" v-model="noteToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
+               <div class="lds-ripple" v-if="loading"><div></div><div></div></div>
            </div>
-           <button class="notes-bar__btn j-popup">
+           <button class="notes-bar__btn" @click="addNote">
                <i></i>
            </button>
        </div>
@@ -34,13 +35,15 @@
 
 <script>
 
+    import _ from 'lodash'
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
         data() {
             return {
                 noteToSearch: '',
-                selectedCategory: 'all'
+                selectedCategory: 'all',
+                loading: false
             }
         },
         computed: {
@@ -73,6 +76,15 @@
             removeNote(id) {
                 this.moveNoteToTrash(id);
                 this.deleteNote(id);
+            },
+            initLoading() {
+                this.loading = true
+            },
+            debounce: _.debounce(function () {
+                this.loading = false;
+            }, 300),
+            addNote() {
+                window.popup.manualOpen();
             }
         }
     }

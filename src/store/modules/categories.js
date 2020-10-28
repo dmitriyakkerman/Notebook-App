@@ -1,11 +1,8 @@
 export default {
     state: {
-        categories: [
+        categories: JSON.parse(localStorage.getItem('categories')) || [
             {
-                id: 3, title: 'Personal'
-            },
-            {
-                id: 4, title: 'Work'
+                id: 2, title: 'Category1'
             }
         ],
         categoriesTrash: []
@@ -44,7 +41,8 @@ export default {
     },
     mutations: {
         addCategory(state, newCategory) {
-            state.categories.push(newCategory)
+            state.categories.push(newCategory);
+            localStorage.setItem('categories', JSON.stringify(state.categories));
         },
         removeCategory(state, id) {
             state.categories = state.categories.filter(function (category) {
@@ -79,6 +77,9 @@ export default {
                     }
                 })
             }
+        },
+        cleanCategoriesTrash(state) {
+            state.categoriesTrash = []
         }
     }
 }

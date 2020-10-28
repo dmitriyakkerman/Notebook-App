@@ -66,6 +66,16 @@
                     that.$router.push('/notes');
                 }
             }
+        },
+        mounted() {
+            let popup = new window.ArmUI.Popup({
+                el: '.popup',
+                openers: '.j-popup',
+                closable: true
+            });
+
+            window.popup = popup;
+
         }
     }
 

@@ -1,14 +1,9 @@
 export default {
     state: {
-        notes: [
+        notes: JSON.parse(localStorage.getItem('notes')) || [
             {
-                id: 1, title: 'Note1', text: 'Note1 text', favourite: true, category: {
-                    id: 3, title: 'Personal'
-                }
-            },
-            {
-                id: 2, title: 'Note2', text: 'Note2 text', favourite: false, category: {
-                    id: 4, title: 'Work'
+                id: 1, title: 'Note1', text: 'Note 1 text', category: {
+                    id: 2, title: 'Category1'
                 }
             }
         ],
@@ -63,7 +58,8 @@ export default {
     },
     mutations: {
         addNote(state, newNote) {
-            state.notes.push(newNote)
+            state.notes.push(newNote);
+            localStorage.setItem('notes', JSON.stringify(state.notes))
         },
         makeNoteFavourite(state, id) {
             state.notes = state.notes.map(function (note) {
@@ -115,6 +111,9 @@ export default {
                     state.notes.push(note)
                 }
             })
+        },
+        cleanNotesTrash(state) {
+            state.notesTrash = []
         }
     }
 }
