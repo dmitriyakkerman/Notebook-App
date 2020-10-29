@@ -47,6 +47,7 @@
                 <li><a href="https://marked.js.org/demo/">Marked</a> markdown support</li>
                 <li>Light/dark theme</li>
                 <li><a href="https://github.com/dmitriyakkerman/arm-ui">Arm-UI</a> component library</li>
+                <li>Local storage usage</li>
             </ul>
         </div>
     </div>

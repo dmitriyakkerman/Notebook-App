@@ -39,8 +39,8 @@
             }
         },
         mounted() {
+            this.date = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear();
             setInterval(() => {
-                this.date = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
                 this.time = new Date()
             }, 1000)
         }

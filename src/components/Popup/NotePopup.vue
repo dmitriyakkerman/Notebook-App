@@ -1,17 +1,33 @@
 <template>
     <div class="note-popup">
-        <h3 class="popup__heading">Note form</h3>
-        <form action="" class="popup__form" @submit.prevent="addNote">
-            <input type="text" class="popup__title" placeholder="Note title" v-model="note.title">
-            <div class="popup__form-group">
-                <select v-model="selected" class="popup__select">
-                    <option disabled value="default">Choose category</option>
-                    <option v-for="category in categories" :key="category.id" :value="category.title">{{category.title}}</option>
-                </select>
-                <input type="date" class="popup__date">
+        <h3 class="popup__title">Note form</h3>
+        <form action="" class="form" @submit.prevent="addNote">
+            <div class="form-group">
+                <div class="form__title">
+                    <label for="note-title">Note title</label>
+                    <input id="note-title" type="text" v-model="note.title">
+                </div>
             </div>
-            <textarea class="popup__text" placeholder="Note text" v-model="note.text"></textarea>
-            <input type="submit" class="popup__submit" value="Add">
+            <div class="form-group">
+                <div class="form__select">
+                    <label for="note-select">Note category</label>
+                    <select id="note-select" v-model="selected">
+                        <option disabled value="default">Choose category</option>
+                        <option v-for="category in categories" :key="category.id" :value="category.title">{{category.title}}</option>
+                    </select>
+                </div>
+                <div class="form__date">
+                    <label for="note-date">Deadline</label>
+                    <input type="date" id="note-date" v-model="note.deadline">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form__text">
+                    <label for="note-text">Note text</label>
+                    <textarea id="note-text" v-model="note.text"></textarea>
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="form__submit">
         </form>
     </div>
 </template>
@@ -27,7 +43,8 @@
                 selected: 'default',
                 note: {
                     title: '',
-                    text: ''
+                    text: '',
+                    deadline: null
                 }
             }
         },
@@ -54,6 +71,7 @@
                         id: Date.now(),
                         title: that.note.title,
                         text: marked(that.note.text),
+                        deadline: that.note.deadline,
                         favourite: false,
                         category: {
                             id: that.findCategoryId,
@@ -64,7 +82,7 @@
                     that.postNote(newNote);
                     that.selected = 'default';
                     that.note.title = that.note.text = '';
-                    that.$router.push('/notes');
+                    that.$router.push('/notes/' + newNote.id);
                 }
             }
         }

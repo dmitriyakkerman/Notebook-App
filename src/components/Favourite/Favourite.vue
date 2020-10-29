@@ -10,6 +10,7 @@
             <div class="favourite__container">
                 <div class="favourite-item" v-for="note in filteredNotes(favourite)" :key="note.id">
                     <div class="favourite-item__title">{{ note.title }}</div>
+                    <div class="favourite-item__status">{{ note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : '' }}</div>
                     <div class="favourite-item__nav">
                         <router-link :to="'/categories/' + note.category.id" class="favourite-item__category" title="Note category">{{ note.category.title }}</router-link>
                         <div class="favourite-item__buttons">

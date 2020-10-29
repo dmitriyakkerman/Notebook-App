@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve" width="512" height="512">
-<g id="_x31_3-Info_Box">
-	<path style="fill:#EBBA16;" d="M26.64,0.094C12.722,1.194,1.399,12.368,0.125,26.271c-0.537,5.864,0.678,11.405,3.176,16.168   c0.908,1.731,1.023,3.768,0.35,5.603L0,58l10.55-3.517c1.747-0.582,3.664-0.472,5.304,0.365c4.77,2.434,10.299,3.589,16.144,3.001   c13.793-1.389,24.814-12.666,25.908-26.485C59.322,13.488,44.515-1.32,26.64,0.094z"/>
-	<circle style="fill:#FFFFFF;" cx="29" cy="29" r="24"/>
-	<circle style="fill:#E83132;" cx="29" cy="15" r="3"/>
-	<path style="fill:#E83132;" d="M29,46L29,46c-1.657,0-3-1.343-3-3V26c0-1.657,1.343-3,3-3h0c1.657,0,3,1.343,3,3v17   C32,44.657,30.657,46,29,46z"/>
-</g>
-
-</svg>
+<svg height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g id="flat"><path d="m472 296h-432l24-256h384z" fill="#fbb540"/><path d="m40 296h432v48h-432z" fill="#d18d28"/><path d="m168 344h176l8 128h-192z" fill="#6e3f0d"/><path d="m200 344h112v128h-112z" fill="#834b10"/><path d="m240 200h-160l16-128h128z" fill="#3a97ff"/><circle cx="160" cy="128" fill="#007af6" r="24"/><path d="m126 152h68a14 14 0 0 1 14 14v34h-96v-34a14 14 0 0 1 14-14z" fill="#007af6"/><path d="m136 200v-24a8 8 0 0 1 16 0v24z" fill="#006ddc"/><path d="m168 200v-24a8 8 0 0 1 16 0v24z" fill="#006ddc"/><g fill="#ea9d2d"><path d="m320 72h48v16h-48z"/><path d="m272 104h48v16h-48z"/><path d="m336 104h80v16h-80z"/><path d="m272 136h88v16h-88z"/><path d="m376 136h40v16h-40z"/><path d="m272 168h32v16h-32z"/><path d="m320 168h40v16h-40z"/><path d="m352 216h64v16h-64z"/><path d="m376 168h16v16h-16z"/></g><path d="m80 232h160v32h-160z" fill="#d18d28"/><path d="m80 232h32v32h-32z" fill="#ea9d2d"/><path d="m144 232h32v32h-32z" fill="#ea9d2d"/><path d="m208 232h32v32h-32z" fill="#ea9d2d"/></g></svg>

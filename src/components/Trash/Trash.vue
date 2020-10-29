@@ -15,6 +15,7 @@
                     </div>
                     <div class="trash-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
                         <div class="trash-item__title">{{ note.title }}</div>
+                        <div class="trash-item__status">{{ note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : '' }}</div>
                         <div class="trash-item__nav">
                             <router-link :to="'/categories/' + note.category.id" class="trash-item__category" title="Note category">{{ note.category.title }}</router-link>
                             <div class="trash-item__buttons">

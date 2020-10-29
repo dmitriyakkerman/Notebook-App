@@ -11,58 +11,10 @@
     box-shadow: 2px 6px 24px -8px rgba(0, 0, 0, 0.75);
   }
 
-  &__heading {
+  &__title {
     font-size: 30px;
     color: #fff;
     text-align: center;
-  }
-
-  &__form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    box-sizing: border-box;
-    margin-top: 25px;
-  }
-
-  &__title,
-  &__text,
-  &__select {
-    border: none;
-    outline: none;
-  }
-
-  &__title,
-  &__text {
-    display: block;
-    padding-left: 10px;
-    margin-bottom: 15px !important;
-  }
-
-  &__title,
-  &__select {
-    width: 48%;
-    height: 40px;
-    box-sizing: border-box;
-  }
-
-  &__text {
-    width: 100%;
-    min-height: 100px;
-    padding-top: 10px;
-    resize: vertical;
-  }
-
-  &__select {
-    padding: 0 10px;
-  }
-
-  &__submit {
-    padding: 5px 30px;
-    margin: 0 auto;
-    background: #fff;
-    border: none;
-    outline: none;
   }
 
   &__close-btn {
@@ -70,44 +22,81 @@
     top: 15px;
     right: 15px;
     display: block;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     background-image: url("../../assets/img/close.svg");
+    background-size: contain;
   }
 
   & .note-popup {
+    width: 500px;
 
-    .popup__title {
-      width: 100%;
-    }
+    .form {
 
-    .popup__form-group {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 15px;
-    }
+      .form-group {
 
-    .popup__date {
-      width: 48%;
+        &:first-child {
+
+          .form__title {
+            width: 100%;
+
+            label,
+            input {
+              width: 100%;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .form__select,
+          .form__date {
+            width: 48%;
+
+            label,
+            input,
+            select {
+              width: 100%;
+            }
+          }
+        }
+
+        &:nth-child(3) {
+
+          .form__text {
+            width: 100%;
+
+            textarea {
+              width: 100%;
+              min-height: 100px;
+              max-height: 300px;
+              resize: vertical;
+            }
+          }
+        }
+      }
     }
   }
 
   & .category-popup {
+    width: 500px;
 
-    .popup__title {
-      width: 100%;
-    }
+    .form {
 
-    .popup__form-group {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 15px;
-    }
+      .form-group {
 
-    .popup__date {
-      width: 48%;
+        .form__title {
+          width: 100%;
+
+          label,
+          input {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }
