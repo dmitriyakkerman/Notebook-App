@@ -22,6 +22,7 @@
                 <li>Editing</li>
                 <li>Searching by letters combination</li>
                 <li>Filtering by category</li>
+                <li>Filtering by date status</li>
                 <li>Adding/deleting to/from favourite</li>
             </ul>
             <h3>Categories</h3>
@@ -33,11 +34,13 @@
             <h3>Favourite</h3>
             <ul>
                 <li>Filtering notes by category</li>
+                <li>Filtering notes by date status</li>
                 <li>Removing notes and categories from favourite</li>
             </ul>
             <h3>Trash</h3>
             <ul>
                 <li>Filtering notes by category</li>
+                <li>Filtering notes by date status</li>
                 <li>Restoring notes and categories</li>
                 <li>Cleaning trash box</li>
             </ul>

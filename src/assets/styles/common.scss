@@ -24,7 +24,6 @@ body {
     }
 
     .notes-bar {
-      background: rgba(52, 52, 52, 0.89);
 
       .notes-link {
         color: #fff;
@@ -33,6 +32,10 @@ body {
 
     .notebook-content {
       background: #4b4b4b;
+      color: #fff;
+    }
+
+    a {
       color: #fff;
     }
   }
