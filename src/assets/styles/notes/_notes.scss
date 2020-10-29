@@ -46,6 +46,21 @@
       }
     }
 
+    &__status {
+      width: 25px;
+      height: 25px;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      &.active {
+        background-image: url("../../assets/img/clock-active.svg");
+      }
+
+      &.expired {
+        background-image: url("../../assets/img/clock-expired.svg");
+      }
+    }
+
     &__nav {
       display: flex;
       justify-content: space-between;

@@ -18,7 +18,7 @@
                <div class="notes-item" v-for="note in filteredNotes" :key="note.id">
                    <div class="notes-item__title">{{ note.title }}</div>
                    <div class="notes-item__text" v-html="note.text"></div>
-                   <div class="notes-item__status">{{ note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : '' }}</div>
+                   <div class="notes-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
                    <div class="notes-item__nav">
                        <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
                        <div class="notes-item__buttons">
@@ -67,6 +67,11 @@
                         return note.category.title === that.selectedCategory
                     }
                 })
+            },
+            noteStatus() {
+                return {
+
+                }
             }
         },
         methods: {
