@@ -1,7 +1,7 @@
 <template>
     <div class="category__container">
         <div class="category-bar">
-            <button class="note__edit" title="Edit category"></button>
+            <button class="note__edit j-popup popup-category" title="Edit category" @click="editCategory(category.id, $event)"></button>
             <button class="note__remove" title="Remove category" @click="$emit('removeCategory', category.id)"></button>
         </div>
         <div v-if="notesByCategory.length" class="category-notes">
@@ -25,7 +25,7 @@
 
 <script>
 
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
         props: {
@@ -39,12 +39,21 @@
         },
         methods: {
             ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveNoteToTrash']),
+            ...mapMutations(['setPopupComponent']),
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
             },
             removeNote(id) {
                 this.moveNoteToTrash(id);
                 this.deleteNote(id);
+            },
+            editCategory(id, e) {
+                let closest = e.target.closest('.j-popup');
+                if(closest) {
+                    this.setPopupComponent(closest);
+                }
+
+                window.popup.manualOpen();
             }
         }
     }
