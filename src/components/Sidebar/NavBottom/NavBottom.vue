@@ -1,10 +1,11 @@
 <template>
     <div class="nav-nottom">
-        <button class="nav-nottom__theme" @click="toggleTheme" :class="{dark: darkTheme }">
+        <button class="nav-nottom__theme" @click="toggleTheme" :class="{dark: darkTheme}">
             <i></i>
         </button>
         <div class="nav-nottom__time">
-            <span>{{ date | toLocaleTimeString }}</span>
+            <span>{{ time | toLocaleTimeString }} on </span>
+            <span>{{ date }}</span>
         </div>
     </div>
 </template>
@@ -16,7 +17,8 @@
     export default {
         data() {
             return {
-                date: new Date()
+                date: new Date(),
+                time: new Date()
             }
         },
         computed: {
@@ -38,7 +40,8 @@
         },
         mounted() {
             setInterval(() => {
-                this.date = new Date()
+                this.date = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
+                this.time = new Date()
             }, 1000)
         }
     }

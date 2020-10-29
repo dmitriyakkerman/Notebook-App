@@ -1,61 +1,113 @@
 .popup {
 
   &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
     padding: 50px;
-    background: #6d6d6d;
-    box-shadow: 2px 6px 24px -8px rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 6px 24px -8px rgba(0, 0, 0, 0.75);
   }
 
-  &__title {
+  &__heading {
+    font-size: 30px;
     color: #fff;
     text-align: center;
   }
 
-  &-form {
+  &__form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     box-sizing: border-box;
+    margin-top: 25px;
+  }
 
-    &__title,
-    &__text,
-    &__select {
-      border: none;
-      outline: none;
-    }
+  &__title,
+  &__text,
+  &__select {
+    border: none;
+    outline: none;
+  }
 
-    &__title,
-    &__text {
-      display: block;
-      padding-left: 10px;
-      margin-bottom: 15px !important;
-    }
+  &__title,
+  &__text {
+    display: block;
+    padding-left: 10px;
+    margin-bottom: 15px !important;
+  }
 
-    &__title,
-    &__select {
-      width: 48%;
-      height: 40px;
-      box-sizing: border-box;
-    }
+  &__title,
+  &__select {
+    width: 48%;
+    height: 40px;
+    box-sizing: border-box;
+  }
 
-    &__text {
+  &__text {
+    width: 100%;
+    min-height: 100px;
+    padding-top: 10px;
+    resize: vertical;
+  }
+
+  &__select {
+    padding: 0 10px;
+  }
+
+  &__submit {
+    padding: 5px 30px;
+    margin: 0 auto;
+    background: #fff;
+    border: none;
+    outline: none;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    background-image: url("../../assets/img/close.svg");
+  }
+
+  & .note-popup {
+
+    .popup__title {
       width: 100%;
-      min-height: 100px;
-      resize: vertical;
     }
 
-    &__select {
-      padding: 0 10px;
+    .popup__form-group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 15px;
     }
 
-    &__submit {
-      padding: 5px 30px;
-      margin: 0 auto;
-      background: #fff;
-      border: none;
-      outline: none;
+    .popup__date {
+      width: 48%;
     }
   }
 
+  & .category-popup {
 
+    .popup__title {
+      width: 100%;
+    }
+
+    .popup__form-group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .popup__date {
+      width: 48%;
+    }
+  }
 }

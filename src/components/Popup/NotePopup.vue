@@ -1,17 +1,18 @@
 <template>
-    <div class="popup" ref="popup">
-        <div>
-            <h2 class="popup__title">Add Note</h2>
-            <form action="" class="popup-form" @submit.prevent="addNote">
-                <input type="text" class="popup-form__title" placeholder="Note title" v-model="note.title">
-                <select v-model="selected" class="popup-form__select">
+    <div class="note-popup">
+        <h3 class="popup__heading">Note form</h3>
+        <form action="" class="popup__form" @submit.prevent="addNote">
+            <input type="text" class="popup__title" placeholder="Note title" v-model="note.title">
+            <div class="popup__form-group">
+                <select v-model="selected" class="popup__select">
                     <option disabled value="default">Choose category</option>
                     <option v-for="category in categories" :key="category.id" :value="category.title">{{category.title}}</option>
                 </select>
-                <textarea class="popup-form__text" placeholder="Note text" v-model="note.text"></textarea>
-                <input type="submit" class="popup-form__submit" value="Add">
-            </form>
-        </div>
+                <input type="date" class="popup__date">
+            </div>
+            <textarea class="popup__text" placeholder="Note text" v-model="note.text"></textarea>
+            <input type="submit" class="popup__submit" value="Add">
+        </form>
     </div>
 </template>
 
@@ -25,8 +26,8 @@
             return {
                 selected: 'default',
                 note: {
-                   title: '',
-                   text: ''
+                    title: '',
+                    text: ''
                 }
             }
         },
@@ -66,16 +67,6 @@
                     that.$router.push('/notes');
                 }
             }
-        },
-        mounted() {
-            let popup = new window.ArmUI.Popup({
-                el: '.popup',
-                openers: '.j-popup',
-                closable: true
-            });
-
-            window.popup = popup;
-
         }
     }
 

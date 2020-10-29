@@ -1,9 +1,9 @@
 <template>
     <div class="nav-top">
-        <button class="nav-top__btn j-popup" title="Add note">
+        <button class="nav-top__btn j-popup popup-note" title="Add note" @click="getPopupToggler">
             <i></i>
         </button>
-        <button class="nav-top__btn j-popup" title="Add category">
+        <button class="nav-top__btn j-popup popup-category" title="Add category" @click="getPopupToggler">
             <i></i>
         </button>
     </div>
@@ -11,8 +11,18 @@
 
 <script>
 
-    export default {
+    import {mapMutations} from 'vuex'
 
+    export default {
+        methods: {
+            ...mapMutations(['setPopupComponent']),
+            getPopupToggler(e) {
+                let closest = e.target.closest('.j-popup');
+                if(closest) {
+                   this.setPopupComponent(closest);
+                }
+            }
+        }
     }
 
 </script>

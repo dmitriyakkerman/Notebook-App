@@ -16,7 +16,7 @@
 <script>
 
 import Sidebar from "./components/Sidebar/Sidebar";
-import Popup from "./components/Popup";
+import Popup from "./components/Popup/Popup";
 
 import {mapGetters} from 'vuex'
 

@@ -2,8 +2,13 @@ export default {
     state: {
         notes: JSON.parse(localStorage.getItem('notes')) || [
             {
-                id: 1, title: 'Note1', text: 'Note 1 text', category: {
-                    id: 2, title: 'Category1'
+                id: 1, title: 'Note1', text: 'Note1 text', favourite: true, category: {
+                    id: 3, title: 'Personal'
+                }
+            },
+            {
+                id: 2, title: 'Note2', text: 'Note2 text', favourite: false, category: {
+                    id: 4, title: 'Work'
                 }
             }
         ],

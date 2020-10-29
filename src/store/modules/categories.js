@@ -2,7 +2,10 @@ export default {
     state: {
         categories: JSON.parse(localStorage.getItem('categories')) || [
             {
-                id: 2, title: 'Category1'
+                id: 3, title: 'Personal'
+            },
+            {
+                id: 4, title: 'Work'
             }
         ],
         categoriesTrash: []

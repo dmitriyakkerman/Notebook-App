@@ -8,7 +8,7 @@
                     <div></div>
                 </div>
             </div>
-            <button class="categories-bar__btn" @click="addCategory">
+            <button class="categories-bar__btn j-popup popup-category" @click="addCategory">
                 <i></i>
             </button>
         </div>
@@ -56,7 +56,7 @@
         },
         methods: {
             ...mapActions(['deleteCategory', 'moveCategoryToTrash', 'moveNoteToTrash']),
-            ...mapMutations(['removeNotesByCategory']),
+            ...mapMutations(['removeNotesByCategory', 'setPopupComponent']),
             removeCategory(id) {
                 this.moveCategoryToTrash(id);
                 this.deleteCategory(id);
@@ -68,7 +68,11 @@
             debounce: _.debounce(function () {
                 this.loading = false;
             }, 300),
-            addCategory() {
+            addCategory(e) {
+                let closest = e.target.closest('.j-popup');
+                if(closest) {
+                    this.setPopupComponent(closest);
+                }
                 window.popup.manualOpen();
             }
         }
