@@ -14,22 +14,22 @@
                 <button class="note__remove" title="Remove category" @click="$emit('removeCategory', category.id)"></button>
             </div>
         </div>
-        <div v-if="notesByCategory.length" class="category-notes">
-            <div class="category-notes__item" v-for="note in notesByCategory" :key="note.id">
-                <div class="category-notes__title">{{ note.title }}</div>
-                <div class="category-notes__text" v-html="note.text"></div>
-                <div class="category-notes__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
-                <div class="category-notes__nav">
-                    <div class="category-notes__buttons">
-                        <button class="category-notes__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
-                        <router-link :to="'/notes/' + note.id" class="category-notes__look" title="View note"></router-link>
-                        <button class="category-notes__remove" title="Remove note" @click.prevent="removeNote(note.id)"></button>
-                    </div>
+        <div v-if="notesByCategory.length" class="notes__container">
+            <div class="notes-item" v-for="note in notesByCategory" :key="note.id">
+                <div class="notes-item__title">{{ note.title }}</div>
+                <div class="notes-item__text" v-html="note.text"></div>
+                <div class="notes-item__status"
+                     :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}"
+                     :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''">
+                </div>
+                <div class="notes-item__buttons">
+                    <button class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
+                    <router-link :to="'/notes/' + note.id" class="notes-item__look" title="View note"></router-link>
+                    <button class="notes-item__remove" title="Remove note" @click.prevent="removeNote(note.id)"></button>
                 </div>
             </div>
         </div>
         <div v-else class="category__no-notes">There is any note. Create new one! <span class="warning"></span></div>
-
     </div>
 </template>
 

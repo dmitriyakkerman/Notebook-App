@@ -4,7 +4,7 @@
             <div class="main-bar__filters">
                 <label for="search-category">Search category</label>
                 <input id="search-category" type="text" class="main-bar__search" v-model="categoryToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
-                <div class="lds-ripple" v-if="loading">
+                <div class="search-loader" v-if="loading">
                     <div></div>
                     <div></div>
                 </div>

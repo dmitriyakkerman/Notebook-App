@@ -16,15 +16,18 @@
                     </select>
                 </div>
             </div>
-            <div class="favourite__container">
-                <div class="favourite-item" v-for="note in filteredNotes(favourite)" :key="note.id">
-                    <div class="favourite-item__title">{{ note.title }}</div>
-                    <div class="favourite-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
-                    <div class="favourite-item__nav">
-                        <router-link :to="'/categories/' + note.category.id" class="favourite-item__category" title="Note category">{{ note.category.title }}</router-link>
-                        <div class="favourite-item__buttons">
-                            <button class="favourite-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
-                            <router-link :to="'/notes/' + note.id" class="favourite-item__look" title="View note"></router-link>
+            <div class="notes__container">
+                <div class="notes-item" v-for="note in filteredNotes(favourite)" :key="note.id">
+                    <div class="notes-item__title">{{ note.title }}</div>
+                    <div class="notes-item__status"
+                         :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}"
+                         :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''">
+                    </div>
+                    <div class="notes-item__nav">
+                        <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
+                        <div class="notes-item__buttons">
+                            <button class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
+                            <router-link :to="'/notes/' + note.id" class="notes-item__look" title="View note"></router-link>
                         </div>
                     </div>
                 </div>

@@ -15,33 +15,34 @@
                </select>
                <label for="search-notes">Search Notes</label>
                <input id="search-notes" type="text" class="main-bar__search" v-model="noteToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
-               <div class="lds-ripple" v-if="loading"><div></div><div></div></div>
+               <div class="search-loader" v-if="loading">
+                   <div></div>
+                   <div></div>
+               </div>
            </div>
            <button class="main-bar__btn j-popup popup-note" @click="addNote">
                <i></i>
            </button>
        </div>
-       <div class="notes__container">
-           <div v-if="filteredNotes.length">
-               <div class="notes-item" v-for="note in filteredNotes" :key="note.id">
-                   <div class="notes-item__title">{{ note.title }}</div>
-                   <div class="notes-item__text" v-html="note.text"></div>
-                   <div class="notes-item__status"
-                        :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}"
-                        :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''">
-                   </div>
-                   <div class="notes-item__nav">
-                       <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
-                       <div class="notes-item__buttons">
-                           <button class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
-                           <router-link :to="'/notes/' + note.id" class="notes-item__look" title="View note"></router-link>
-                           <button class="notes-item__remove" title="Remove note" @click.prevent="removeNote(note.id)"></button>
-                       </div>
+       <div v-if="filteredNotes.length" class="notes__container">
+           <div class="notes-item" v-for="note in filteredNotes" :key="note.id">
+               <div class="notes-item__title">{{ note.title }}</div>
+               <div class="notes-item__text" v-html="note.text"></div>
+               <div class="notes-item__status"
+                    :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}"
+                    :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''">
+               </div>
+               <div class="notes-item__nav">
+                   <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
+                   <div class="notes-item__buttons">
+                       <button class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
+                       <router-link :to="'/notes/' + note.id" class="notes-item__look" title="View note"></router-link>
+                       <button class="notes-item__remove" title="Remove note" @click.prevent="removeNote(note.id)"></button>
                    </div>
                </div>
            </div>
-           <div v-else class="notes__no-notes">There is any note. Create new one! <span class="warning"></span></div>
        </div>
+       <div v-else class="notes__no-notes">There is any note. Create new one! <span class="warning"></span></div>
    </div>
 </template>
 
