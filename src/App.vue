@@ -28,7 +28,7 @@ export default {
   components: {
     Sidebar,
     Popup: () => import('./components/Popup/Popup.vue'),
-    Modal: () => import('./components/Slots/Modal.vue')
+    Modal: () => import('./components/Modal/Modal.vue')
   },
   computed: {
     ...mapGetters(['darkTheme', 'modalOpen'])

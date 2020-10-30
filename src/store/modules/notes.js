@@ -73,7 +73,9 @@ export default {
         removeNote(state, id) {
             state.notes = state.notes.filter(function (note) {
                 return note.id !== id;
-            })
+            });
+
+            localStorage.setItem('notes', JSON.stringify(state.notes));
         },
         trashNote(state, id) {
             let note = state.notes.find(function (note) {

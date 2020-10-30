@@ -47,6 +47,7 @@ export default {
             state.categories = state.categories.filter(function (category) {
                 return category.id !== id
             })
+            localStorage.setItem('categories', JSON.stringify(state.categories));
         },
         trashCategory(state, id) {
             let category = state.categories.find(function (category) {

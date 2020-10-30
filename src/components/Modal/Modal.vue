@@ -1,7 +1,7 @@
 <template>
-    <div class="modal">
+    <h3 class="modal">
         {{ modalMessage }}
-    </div>
+    </h3>
 </template>
 
 <script>
