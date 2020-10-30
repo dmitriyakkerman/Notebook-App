@@ -20,16 +20,16 @@
             <ul>
                 <li>Adding/Deleting</li>
                 <li>Editing</li>
-                <li>Searching by letters combination</li>
                 <li>Filtering by category</li>
                 <li>Filtering by date status</li>
+                <li>Searching by letters combination</li>
                 <li>Adding/deleting to/from favourite</li>
             </ul>
             <h3>Categories</h3>
             <ul>
                 <li>Adding/Deleting</li>
                 <li>Editing</li>
-                <li>Searching</li>
+                <li>Searching by letters combination</li>
             </ul>
             <h3>Favourite</h3>
             <ul>
