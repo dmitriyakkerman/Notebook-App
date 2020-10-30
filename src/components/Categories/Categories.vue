@@ -1,14 +1,15 @@
 <template>
     <div class="categories">
-        <div class="categories-bar">
-            <div class="categories-bar__search">
-                <input type="text" class="categories-bar__input" placeholder="Search category" v-model="categoryToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
+        <div class="main-bar main-bar--categories">
+            <div class="main-bar__filters">
+                <label for="search-category">Search category</label>
+                <input id="search-category" type="text" class="main-bar__search" v-model="categoryToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
                 <div class="lds-ripple" v-if="loading">
                     <div></div>
                     <div></div>
                 </div>
             </div>
-            <button class="categories-bar__btn j-popup popup-category" @click="addCategory">
+            <button class="main-bar__btn j-popup popup-category" @click="addCategory">
                 <i></i>
             </button>
         </div>

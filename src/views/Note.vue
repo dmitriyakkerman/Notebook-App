@@ -1,5 +1,5 @@
 <template>
-    <div class="note">
+    <div v-if="note" class="note">
         <h1 class="title">{{ note.title }}</h1>
         <Note :note="note" @removeNote="removeNote"></Note>
     </div>

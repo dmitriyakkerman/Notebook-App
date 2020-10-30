@@ -1,13 +1,6 @@
 export default {
     state: {
-        categories: JSON.parse(localStorage.getItem('categories')) || [
-            {
-                id: 3, title: 'Personal'
-            },
-            {
-                id: 4, title: 'Work'
-            }
-        ],
+        categories: JSON.parse(localStorage.getItem('categories')) || [],
         categoriesTrash: []
     },
     getters: {

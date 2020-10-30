@@ -33,7 +33,6 @@ export default new VueRouter({
         {
             path: '/trash',
             component: () => import('./views/Trash.vue')
-        },
-
+        }
     ]
 })

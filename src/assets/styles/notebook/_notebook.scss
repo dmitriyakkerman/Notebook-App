@@ -1,0 +1,34 @@
+.notebook {
+  height: 100vh;
+  overflow-y: hidden;
+
+  &__container {
+    display: flex;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
+  &.dark-theme {
+    transition: all .3s ease;
+
+    .notes {
+      color: #fff;
+    }
+
+    .notes-bar {
+
+      .notes-link {
+        color: #fff;
+      }
+    }
+
+    .notebook-content {
+      background: #4b4b4b;
+      color: #fff;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+}

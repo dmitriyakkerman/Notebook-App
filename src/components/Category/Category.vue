@@ -1,14 +1,24 @@
 <template>
     <div class="category__container">
-        <div class="category-bar">
-            <button class="note__edit j-popup popup-category" title="Edit category" @click="editCategory(category.id, $event)"></button>
-            <button class="note__remove" title="Remove category" @click="$emit('removeCategory', category.id)"></button>
+        <div class="main-bar main-bar--category">
+            <div class="main-bar__filters">
+                <label for="select-category">Select status</label>
+                <select id="select-category" class="main-bar__select-status" v-model="selectedStatus">
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="expired">Expired</option>
+                </select>
+            </div>
+            <div class="main-bar__buttons">
+                <button class="note__edit j-popup popup-category" title="Edit category" @click="editCategory(category.id, $event)"></button>
+                <button class="note__remove" title="Remove category" @click="$emit('removeCategory', category.id)"></button>
+            </div>
         </div>
         <div v-if="notesByCategory.length" class="category-notes">
             <div class="category-notes__item" v-for="note in notesByCategory" :key="note.id">
                 <div class="category-notes__title">{{ note.title }}</div>
                 <div class="category-notes__text" v-html="note.text"></div>
-                <div class="category-notes__status">{{ note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : '' }}</div>
+                <div class="category-notes__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
                 <div class="category-notes__nav">
                     <div class="category-notes__buttons">
                         <button class="category-notes__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
@@ -31,10 +41,35 @@
         props: {
             category: Object
         },
+        data() {
+            return {
+                selectedStatus: 'all'
+            }
+        },
         computed: {
             ...mapGetters(['notesBy']),
            notesByCategory() {
-                return this.notesBy(+this.$route.params.id)
+                let that = this;
+
+                return this.notesBy(+this.$route.params.id).filter(function (note) {
+                    let filtered;
+
+                    if(that.selectedStatus === 'all') {
+                        filtered = that.notesBy(+that.$route.params.id)
+                    }
+                    else if(that.selectedStatus === 'active') {
+                        if(note.deadline && new Date(note.deadline) > Date.now()) {
+                            return note
+                        }
+                    }
+                    else if(that.selectedStatus === 'expired') {
+                        if(note.deadline && new Date(note.deadline) < Date.now()) {
+                            return note
+                        }
+                    }
+
+                    return filtered;
+                })
            }
         },
         methods: {

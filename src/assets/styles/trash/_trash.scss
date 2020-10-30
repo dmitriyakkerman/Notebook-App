@@ -1,33 +1,30 @@
-.favourite {
+.trash {
 
   &__container {
     margin-top: 25px;
   }
 
-  &-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 15px;
-    border-bottom: solid #d0d0d0 2px;
+  &__notes,
+  &__categories {
+    padding-top: 25px;
+  }
 
-    &__filter {
-      width: 200px;
-      height: 35px;
-      box-sizing: border-box;
-      border: none;
-      outline: none;
-    }
+  &__notes {
+    border-top: solid #d0d0d0 2px;
+  }
+
+  &__items {
+    margin-top: 25px;
   }
 
   &-item {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
-    margin-bottom: 20px;
+    border-bottom: solid #cecece 1px;
 
     &:not(:last-child) {
-      border-bottom: solid #cecece 1px;
+      margin-bottom: 20px;
     }
 
     &__title,
@@ -48,7 +45,7 @@
 
     &__nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       width: 30%;
     }
@@ -83,41 +80,57 @@
       }
     }
 
-    &__favourite {
+    &__restore {
       width: 25px;
       height: 25px;
       border: none;
       outline: none;
       background: none;
-      background-image: url("../../assets/img/star.svg");
+      background-image: url("../../assets/img/restore.svg");
       background-size: contain;
       cursor: pointer;
-      transition: all .3s ease;
+    }
+
+    &__status {
+      width: 25px;
+      height: 25px;
+      background-size: contain;
+      background-repeat: no-repeat;
 
       &.active {
-        background-image: url("../../assets/img/star-active.svg");
+        background-image: url("../../assets/img/clock-active.svg");
+      }
+
+      &.expired {
+        background-image: url("../../assets/img/clock-expired.svg");
       }
     }
+  }
 
-    &__look {
-      display: block;
-      width: 25px;
-      height: 25px;
-      background: none;
-      background-image: url("../../assets/img/look.svg");
-      background-size: contain;
+  &__clean {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: solid #6b6b6b;
+    border-radius: 10px;
+    outline: none;
+    background: #d2d2d2;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+      background: #c4c4c4;
     }
 
-    &__remove {
-      width: 25px;
-      height: 25px;
-      border: none;
-      outline: none;
-      background: none;
-      background-image: url("../../assets/img/trash.svg");
-      background-size: contain;
-      cursor: pointer;
-      transition: all .3s ease;
+    i {
+      width: 20px;
+      height: 20px;
+      background-image: url("../../assets/img/clean.svg");
+      background-size: cover;
     }
   }
 }

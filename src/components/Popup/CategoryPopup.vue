@@ -37,7 +37,7 @@
 
                     that.postCategory(newCategory);
                     that.category.title = '';
-                    that.$router.push('/categories');
+                    that.$router.push('/categories/' + newCategory.id);
                 }
             }
         }

@@ -52,6 +52,13 @@
     transition: all .3s ease;
   }
 
+  &__date {
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__status {
     width: 25px;
     height: 25px;

@@ -1,16 +1,25 @@
 <template>
-    <div class="favourite">
+    <div>
         <div v-if="favourite.length">
-            <div class="favourite-bar">
-                <select class="favourite-bar__filter" v-model="selectedCategory">
-                    <option value="all">All</option>
-                    <option v-for="note in favourite" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
-                </select>
+            <div class="main-bar">
+                <div class="main-bar__filters">
+                    <label for="select-category">Select category</label>
+                    <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
+                        <option value="all">All</option>
+                        <option v-for="note in favourite" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
+                    </select>
+                    <label for="select-status">Select status</label>
+                    <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="expired">Expired</option>
+                    </select>
+                </div>
             </div>
             <div class="favourite__container">
                 <div class="favourite-item" v-for="note in filteredNotes(favourite)" :key="note.id">
                     <div class="favourite-item__title">{{ note.title }}</div>
-                    <div class="favourite-item__status">{{ note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : '' }}</div>
+                    <div class="favourite-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
                     <div class="favourite-item__nav">
                         <router-link :to="'/categories/' + note.category.id" class="favourite-item__category" title="Note category">{{ note.category.title }}</router-link>
                         <div class="favourite-item__buttons">
@@ -35,7 +44,8 @@
         },
         data() {
             return {
-                selectedCategory: 'all'
+                selectedCategory: 'all',
+                selectedStatus: 'all',
             }
         },
         methods: {
@@ -53,7 +63,25 @@
                     }
                 })
 
-                return filteredNotes;
+                return filteredNotes.filter(function (note) {
+                    let filtered;
+
+                    if(that.selectedStatus === 'all') {
+                        filtered = filteredNotes
+                    }
+                    else if(that.selectedStatus === 'active') {
+                        if(note.deadline && new Date(note.deadline) > Date.now()) {
+                            return note
+                        }
+                    }
+                    else if(that.selectedStatus === 'expired') {
+                        if(note.deadline && new Date(note.deadline) < Date.now()) {
+                            return note
+                        }
+                    }
+
+                    return filtered;
+                })
             },
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
