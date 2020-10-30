@@ -47,6 +47,11 @@
             <hr>
             <h2>Other</h2>
             <ul>
+                <li>
+                    <a href="https://vuejs.org/">Vue.js</a> |
+                    <a href="https://vuex.vuejs.org/ru/guide/">Vuex</a> |
+                    <a href="https://router.vuejs.org/ru/">Vue Router</a>
+                </li>
                 <li><a href="https://marked.js.org/demo/">Marked</a> markdown support</li>
                 <li>Light/dark theme</li>
                 <li><a href="https://github.com/dmitriyakkerman/arm-ui">Arm-UI</a> component library</li>

@@ -35,7 +35,7 @@
 <script>
 
     import marked from 'marked'
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
         data() {
@@ -64,6 +64,7 @@
         },
         methods: {
             ...mapActions(['postNote']),
+            ...mapMutations(['toggleModal', 'setModalMessage']),
             addNote() {
                 let that = this;
                 if(this.note.title.trim() && this.note.text.trim() && this.selected !== 'default') {
@@ -80,6 +81,8 @@
                     };
 
                     that.postNote(newNote);
+                    that.toggleModal();
+                    that.setModalMessage('Note has been submitted');
                     that.selected = 'default';
                     that.note.title = that.note.text = '';
                     that.$router.push('/notes/' + newNote.id);

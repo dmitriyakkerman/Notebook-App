@@ -22,14 +22,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="trash__items">
-                        <div class="trash-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
-                            <div class="trash-item__title">{{ note.title }}</div>
-                            <div class="trash-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
-                            <div class="trash-item__nav">
-                                <router-link :to="'/categories/' + note.category.id" class="trash-item__category" title="Note category">{{ note.category.title }}</router-link>
-                                <div class="trash-item__buttons">
-                                    <button class="trash-item__restore" title="Restore note" @click="restoreNote(note)"></button>
+                    <div class="notes__items">
+                        <div class="notes-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
+                            <div class="notes-item__title">{{ note.title }}</div>
+                            <div class="notes-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
+                            <div class="notes-item__nav">
+                                <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
+                                <div class="notes-item__buttons">
+                                    <button class="notes-item__restore" title="Restore note" @click="restoreNote(note)"></button>
                                 </div>
                             </div>
                         </div>
@@ -38,27 +38,31 @@
             </div>
             <div v-if="categoriesTrash.length" class="trash__categories">
                 <h2>Categories</h2>
-                <div class="trash__container">
-                    <div class="trash-item" v-for="category in categoriesTrash" :key="category.id">
-                        <div class="trash-item__title">{{ category.title }}</div>
-                        <div class="trash-item__nav">
-                            <div class="trash-item__buttons">
-                                <button class="trash-item__restore" title="Restore note" @click="restoreCategory(category)"></button>
+                <div class="notes__items">
+                    <div class="notes-item" v-for="category in categoriesTrash" :key="category.id">
+                        <div class="notes-item__title">{{ category.title }}</div>
+                        <div class="notes-item__nav">
+                            <div class="notes-item__buttons">
+                                <button class="notes-item__restore" title="Restore note" @click="restoreCategory(category)"></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-else class="trash__no-notes">Trash box is empty! <span class="warning"></span></div>
+        <no-results v-else>Trash box is empty!</no-results>
     </div>
 </template>
 
 <script>
 
-    import {mapActions, mapMutations} from 'vuex';
+    import NoResults from "../Slots/NoResults";
+    import {mapActions} from 'vuex';
 
     export default {
+        components: {
+            NoResults
+        },
         props: {
             notesTrash: Array,
             categoriesTrash: Array
@@ -70,8 +74,7 @@
             }
         },
         methods: {
-            ...mapActions(['moveNoteFromTrash', 'moveCategoryFromTrash', 'restoreCategoryByNote', 'restoreNotesByCategory']),
-            ...mapMutations(['cleanNotesTrash', 'cleanCategoriesTrash']),
+            ...mapActions(['moveNoteFromTrash', 'moveCategoryFromTrash', 'restoreCategoryByNote', 'restoreNotesByCategory', 'cleanNotesTrash', 'cleanCategoriesTrash']),
             filteredNotes(notes) {
                 let that = this;
                 let filteredNotes;

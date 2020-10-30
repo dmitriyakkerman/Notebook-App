@@ -1,9 +1,9 @@
 <template>
-    <div class="nav-nottom">
-        <button class="nav-nottom__theme" @click="toggleTheme" :class="{dark: darkTheme}">
+    <div class="nav-bottom">
+        <button class="nav-bottom__theme" @click="toggleTheme" :class="{dark: darkTheme}">
             <i></i>
         </button>
-        <div class="nav-nottom__time">
+        <div class="nav-bottom__time">
             <span>{{ time | toLocaleTimeString }} on </span>
             <span>{{ date }}</span>
         </div>

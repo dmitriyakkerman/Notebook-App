@@ -46,8 +46,14 @@ export default {
         moveNoteFromTrash({commit}, note) {
             commit('moveNoteFromTrash', note)
         },
+        removeNotesByCategory({commit}, id) {
+            commit('removeNotesByCategory', id)
+        },
         restoreNotesByCategory({commit}, category) {
             commit('restoreNotesByCategory', category)
+        },
+        cleanNotesTrash({commit}) {
+            commit('cleanNotesTrash')
         }
     },
     mutations: {

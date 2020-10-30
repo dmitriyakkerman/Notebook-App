@@ -10,13 +10,16 @@
 
     <Popup></Popup>
 
+    <transition name="slideDown">
+      <Modal v-if="modalOpen">111</Modal>
+    </transition>
+
   </div>
 </template>
 
 <script>
 
 import Sidebar from "./components/Sidebar/Sidebar";
-import Popup from "./components/Popup/Popup";
 
 import {mapGetters} from 'vuex'
 
@@ -24,10 +27,11 @@ export default {
   name: 'App',
   components: {
     Sidebar,
-    Popup
+    Popup: () => import('./components/Popup/Popup.vue'),
+    Modal: () => import('./components/Slots/Modal.vue')
   },
   computed: {
-    ...mapGetters(['darkTheme'])
+    ...mapGetters(['darkTheme', 'modalOpen'])
   },
   mounted() {
     document.title = 'Notebook App'

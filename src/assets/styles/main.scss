@@ -5,7 +5,6 @@
 @import "content/content";
 @import "about/about";
 @import "notes/notes";
-@import "note/note";
 @import "categories/categories";
 @import "trash/trash";
 @import "components/main-bar";
@@ -15,3 +14,6 @@
 @import "components/form";
 @import "components/notes-item";
 @import "components/categories-item";
+@import "components/no-results";
+@import "components/modal";
+@import "animations/animations";

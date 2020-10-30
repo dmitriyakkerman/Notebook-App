@@ -9,101 +9,12 @@
     padding-top: 25px;
   }
 
-  &__notes {
+  &__notes,
+  &__categories {
     border-top: solid #d0d0d0 2px;
-  }
 
-  &__items {
-    margin-top: 25px;
-  }
-
-  &-item {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    border-bottom: solid #cecece 1px;
-
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
-
-    &__title,
-    &__text,
-    &__category {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    &__title {
-      width: 20%;
-    }
-
-    &__text {
-      width: 30%;
-    }
-
-    &__nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      width: 30%;
-    }
-
-    &__category {
-      position: relative;
-      width: 50%;
-      padding-left: 40px;
-      text-decoration: none;
-
-      &:before {
-        position: absolute;
-        top: -2px;
-        left: 0;
-        width: 25px;
-        height: 25px;
-        background-image: url("../../assets/img/folder.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        content: '';
-      }
-    }
-
-    &__buttons {
-      width: 30%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-
-      > * {
-        margin-left: 20px;
-      }
-    }
-
-    &__restore {
-      width: 25px;
-      height: 25px;
-      border: none;
-      outline: none;
-      background: none;
-      background-image: url("../../assets/img/restore.svg");
-      background-size: contain;
-      cursor: pointer;
-    }
-
-    &__status {
-      width: 25px;
-      height: 25px;
-      background-size: contain;
-      background-repeat: no-repeat;
-
-      &.active {
-        background-image: url("../../assets/img/clock-active.svg");
-      }
-
-      &.expired {
-        background-image: url("../../assets/img/clock-expired.svg");
-      }
+    .notes__items {
+      margin-top: 25px;
     }
   }
 
@@ -132,5 +43,9 @@
       background-image: url("../../assets/img/clean.svg");
       background-size: cover;
     }
+  }
+
+  .notes-item__nav {
+    justify-content: flex-end;
   }
 }

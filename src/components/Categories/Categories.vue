@@ -1,5 +1,5 @@
 <template>
-    <div class="categories">
+    <div>
         <div class="main-bar main-bar--categories">
             <div class="main-bar__filters">
                 <label for="search-category">Search category</label>
@@ -25,17 +25,21 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="categories__no-categories">There is any category. Create new one! <span class="warning"></span></div>
+            <no-results v-else>There is any category. Create new one!</no-results>
         </div>
     </div>
 </template>
 
 <script>
 
+    import NoResults from "../Slots/NoResults";
     import _ from 'lodash'
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
+        components: {
+          NoResults
+        },
         data() {
             return {
                 categoryToSearch: '',
@@ -56,8 +60,8 @@
             }
         },
         methods: {
-            ...mapActions(['deleteCategory', 'moveCategoryToTrash', 'moveNoteToTrash']),
-            ...mapMutations(['removeNotesByCategory', 'setPopupComponent']),
+            ...mapActions(['deleteCategory', 'moveCategoryToTrash', 'moveNoteToTrash', 'removeNotesByCategory']),
+            ...mapMutations(['setPopupComponent']),
             removeCategory(id) {
                 this.moveCategoryToTrash(id);
                 this.deleteCategory(id);

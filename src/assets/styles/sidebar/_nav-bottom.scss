@@ -1,4 +1,4 @@
-.nav-nottom {
+.nav-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,6 +10,7 @@
   &__theme {
     display: flex;
     justify-content: center;
+
     align-items: center;
     width: 40px;
     height: 40px;

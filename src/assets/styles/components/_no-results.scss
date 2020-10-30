@@ -1,0 +1,10 @@
+.no-results {
+
+  &__warning {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    background-image: url("../../assets/img/warning.svg");
+  }
+}

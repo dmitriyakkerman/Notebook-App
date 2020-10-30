@@ -15,16 +15,16 @@
       color: #fff;
     }
 
-    .notes-bar {
-
-      .notes-link {
-        color: #fff;
-      }
-    }
-
     .notebook-content {
       background: #4b4b4b;
       color: #fff;
+
+      .about {
+
+        a {
+          color: #ffc107;
+        }
+      }
     }
 
     a {

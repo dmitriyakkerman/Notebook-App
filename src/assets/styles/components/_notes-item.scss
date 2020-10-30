@@ -123,4 +123,15 @@
     cursor: pointer;
     transition: all .3s ease;
   }
+
+  &__restore {
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url("../../assets/img/restore.svg");
+    background-size: contain;
+    cursor: pointer;
+  }
 }

@@ -33,15 +33,19 @@
                 </div>
             </div>
         </div>
-        <div v-else class="favourite__no-notes">You don't have any favourite note so far! <span class="warning"></span></div>
+        <no-results v-else>You don't have any favourite note so far!</no-results>
     </div>
 </template>
 
 <script>
 
+    import NoResults from "../Slots/NoResults";
     import {mapActions} from 'vuex';
 
     export default {
+        components: {
+            NoResults
+        },
         props: {
             favourite: Array
         },

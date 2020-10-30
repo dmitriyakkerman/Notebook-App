@@ -33,7 +33,10 @@ export default {
         },
         restoreCategoryByNote({commit}, note) {
             commit('restoreCategoryByNote', note)
-        }
+        },
+        cleanCategoriesTrash({commit}) {
+            commit('cleanCategoriesTrash')
+        },
     },
     mutations: {
         addCategory(state, newCategory) {

@@ -15,7 +15,7 @@
 
 <script>
 
-    import {mapActions} from 'vuex'
+    import {mapActions, mapMutations} from 'vuex'
 
     export default {
         data() {
@@ -27,6 +27,7 @@
         },
         methods: {
             ...mapActions(['postCategory']),
+            ...mapMutations(['toggleModal', 'setModalMessage']),
             addCategory() {
                 let that = this;
                 if(this.category.title.trim()) {
@@ -36,6 +37,8 @@
                     };
 
                     that.postCategory(newCategory);
+                    that.toggleModal();
+                    that.setModalMessage('Category has been submitted');
                     that.category.title = '';
                     that.$router.push('/categories/' + newCategory.id);
                 }

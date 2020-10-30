@@ -61,6 +61,97 @@
     }
   }
 
+  &__category {
+    position: relative;
+    width: 50%;
+    padding-left: 40px;
+
+    &:before {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 25px;
+      height: 25px;
+      background-image: url("../../assets/img/folder.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      content: '';
+    }
+  }
+
+  &__date {
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__status {
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.active {
+      background-image: url("../../assets/img/clock-active.svg");
+    }
+
+    &.expired {
+      background-image: url("../../assets/img/clock-expired.svg");
+    }
+  }
+
+  &__edit {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url("../../assets/img/edit.svg");
+    background-size: contain;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+
+  &__remove {
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url("../../assets/img/trash.svg");
+    background-size: contain;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+
+  &__favourite {
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url("../../assets/img/star.svg");
+    background-size: contain;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &.active {
+      background-image: url("../../assets/img/star-active.svg");
+    }
+  }
+
+  &__buttons {
+
+    button {
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
   &--categories {
 
     .main-bar__btn {

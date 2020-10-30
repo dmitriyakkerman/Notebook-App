@@ -1,0 +1,6 @@
+.slideDown-enter-active, .slideDown-leave-active {
+  transition: opacity .5s;
+}
+.slideDown-enter, .slideDown-leave-to {
+  opacity: 0;
+}
