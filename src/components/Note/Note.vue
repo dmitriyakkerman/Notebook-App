@@ -8,7 +8,7 @@
             </div>
             <div class="main-bar__buttons">
                 <button class="main-bar__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
-                <button class="main-bar__edit j-popup popup-note" title="Edit note" @click="editNote(note.id, $event)"></button>
+                <button class="main-bar__edit j-popup popup-note" title="Edit note" @click="editNote(note, $event)"></button>
                 <button class="main-bar__remove" title="Remove Note" @click="$emit('removeNote', note.id)"></button>
             </div>
         </div>
@@ -30,10 +30,10 @@
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
             },
-            editNote(id, e) {
+            editNote(note, e) {
                 let closest = e.target.closest('.j-popup');
                 if(closest) {
-                    this.setPopupComponent(closest);
+                    this.setPopupComponent(closest, note);
                 }
 
                 window.popup.manualOpen();

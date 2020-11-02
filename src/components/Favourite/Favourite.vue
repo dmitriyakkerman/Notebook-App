@@ -1,22 +1,22 @@
 <template>
     <div>
-        <div v-if="favourite.length">
-            <div class="main-bar">
-                <div class="main-bar__filters">
-                    <label for="select-category">Select category</label>
-                    <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
-                        <option value="all">All</option>
-                        <option v-for="note in favourite" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
-                    </select>
-                    <label for="select-status">Select status</label>
-                    <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
-                        <option value="all">All</option>
-                        <option value="active">Active</option>
-                        <option value="expired">Expired</option>
-                    </select>
-                </div>
+        <div class="main-bar">
+            <div class="main-bar__filters">
+                <label for="select-category">Select category</label>
+                <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
+                    <option value="all">All</option>
+                    <option v-for="note in favourite" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
+                </select>
+                <label for="select-status">Select status</label>
+                <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="expired">Expired</option>
+                </select>
             </div>
-            <div class="notes__container">
+        </div>
+        <div class="notes__container">
+            <transition-group name="appear">
                 <div class="notes-item" v-for="note in filteredNotes(favourite)" :key="note.id">
                     <div class="notes-item__title">{{ note.title }}</div>
                     <div class="notes-item__status"
@@ -31,9 +31,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </transition-group>
+            <transition name="no-results">
+                <no-results v-if="!favourite.length">You don't have any favourite note so far!</no-results>
+            </transition>
         </div>
-        <no-results v-else>You don't have any favourite note so far!</no-results>
     </div>
 </template>
 
@@ -68,7 +70,7 @@
                     else {
                         return note.category.title === that.selectedCategory
                     }
-                })
+                });
 
                 return filteredNotes.filter(function (note) {
                     let filtered;

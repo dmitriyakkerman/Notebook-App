@@ -1,6 +1,9 @@
 export default {
     state: {
-        popupForm: 'NotePopup'
+        popupForm: {
+            type: 'NotePopup',
+            data: null
+        }
     },
     getters: {
         popupForm(state) {
@@ -8,12 +11,14 @@ export default {
         }
     },
     mutations: {
-        setPopupComponent(state, target) {
+        setPopupComponent(state, target, data = null) {
             if(target.classList.contains('popup-note')) {
-                state.popupForm = 'NotePopup'
+                state.popupForm.type = 'NotePopup';
+                state.popupForm.data = data
             }
             if(target.classList.contains('popup-category')) {
-                state.popupForm = 'CategoryPopup'
+                state.popupForm.type = 'CategoryPopup';
+                state.popupForm.data = data
             }
         }
     }

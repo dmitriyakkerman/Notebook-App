@@ -1,7 +1,7 @@
 export default {
     state: {
         notes: JSON.parse(localStorage.getItem('notes')) || [],
-        notesTrash: []
+        notesTrash: JSON.parse(localStorage.getItem('notesTrash')) || [],
     },
     getters: {
         notes(state) {
@@ -59,7 +59,7 @@ export default {
     mutations: {
         addNote(state, newNote) {
             state.notes.push(newNote);
-            localStorage.setItem('notes', JSON.stringify(state.notes))
+            localStorage.setItem('notes', JSON.stringify(state.notes));
         },
         makeNoteFavourite(state, id) {
             state.notes = state.notes.map(function (note) {
@@ -68,7 +68,9 @@ export default {
                 }
 
                 return note;
-            })
+            });
+
+            localStorage.setItem('notes', JSON.stringify(state.notes))
         },
         removeNote(state, id) {
             state.notes = state.notes.filter(function (note) {
@@ -82,7 +84,9 @@ export default {
                 return note.id === id
             });
 
-            state.notesTrash.push(note)
+            state.notesTrash.push(note);
+            localStorage.setItem('notes', JSON.stringify(state.notes));
+            localStorage.setItem('notesTrash', JSON.stringify(state.notesTrash));
         },
         moveNoteFromTrash(state, note) {
           state.notesTrash = state.notesTrash.filter(function (item) {
@@ -90,9 +94,12 @@ export default {
                   return item
               }
               else {
-                  state.notes.push(note)
+                  state.notes.push(note);
+                  localStorage.setItem('notes', JSON.stringify(state.notes));
               }
-          })
+          });
+
+          localStorage.setItem('notesTrash', JSON.stringify(state.notesTrash));
         },
         removeNotesByCategory(state, id) {
             state.notes = state.notes.filter(function (note) {
@@ -100,9 +107,12 @@ export default {
                    return note
                }
                else {
-                   state.notesTrash.push(note)
+                   state.notesTrash.push(note);
+                   localStorage.setItem('notesTrash', JSON.stringify(state.notesTrash))
                }
-            })
+            });
+
+            localStorage.setItem('notes', JSON.stringify(state.notes))
         },
         restoreNotesByCategory(state, category) {
             state.notesTrash = state.notesTrash.filter(function (note) {
@@ -110,12 +120,16 @@ export default {
                     return note
                 }
                 else {
-                    state.notes.push(note)
+                    state.notes.push(note);
+                    localStorage.setItem('notes', JSON.stringify(state.notes));
                 }
-            })
+            });
+
+            localStorage.setItem('notesTrash', JSON.stringify(state.notesTrash));
         },
         cleanNotesTrash(state) {
-            state.notesTrash = []
+            state.notesTrash = [];
+            localStorage.setItem('notesTrash', JSON.stringify(state.notesTrash));
         }
     }
 }

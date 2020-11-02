@@ -40,7 +40,6 @@
                     that.toggleModal();
                     that.setModalMessage('Category has been submitted');
                     that.category.title = '';
-                    that.$router.push('/categories/' + newCategory.id);
                 }
             }
         }

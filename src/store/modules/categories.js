@@ -1,7 +1,7 @@
 export default {
     state: {
         categories: JSON.parse(localStorage.getItem('categories')) || [],
-        categoriesTrash: []
+        categoriesTrash: JSON.parse(localStorage.getItem('categoriesTrash')) || [],
     },
     getters: {
         categories(state) {
@@ -46,7 +46,8 @@ export default {
         removeCategory(state, id) {
             state.categories = state.categories.filter(function (category) {
                 return category.id !== id
-            })
+            });
+
             localStorage.setItem('categories', JSON.stringify(state.categories));
         },
         trashCategory(state, id) {
@@ -54,7 +55,9 @@ export default {
                 return category.id === id
             });
 
-            state.categoriesTrash.push(category)
+            state.categoriesTrash.push(category);
+            localStorage.setItem('categories', JSON.stringify(state.categories));
+            localStorage.setItem('categoriesTrash', JSON.stringify(state.categoriesTrash));
         },
         moveCategoryFromTrash(state, category) {
             state.categoriesTrash = state.categoriesTrash.filter(function (item) {
@@ -62,9 +65,12 @@ export default {
                     return item
                 }
                 else {
-                    state.categories.push(category)
+                    state.categories.push(category);
+                    localStorage.setItem('categories', JSON.stringify(state.categories));
                 }
-            })
+            });
+
+            localStorage.setItem('categoriesTrash', JSON.stringify(state.categoriesTrash));
         },
         restoreCategoryByNote(state, note) {
             if(!state.categories.length) {
@@ -73,13 +79,17 @@ export default {
                         return category
                     }
                     else {
-                        state.categories.push(category)
+                        state.categories.push(category);
+                        localStorage.setItem('categories', JSON.stringify(state.categories));
                     }
-                })
+                });
+
+                localStorage.setItem('categoriesTrash', JSON.stringify(state.categoriesTrash));
             }
         },
         cleanCategoriesTrash(state) {
-            state.categoriesTrash = []
+            state.categoriesTrash = [];
+            localStorage.setItem('categoriesTrash', JSON.stringify(state.categoriesTrash));
         }
     }
 }

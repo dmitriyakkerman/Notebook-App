@@ -1,6 +1,6 @@
 export default {
     state: {
-        darkTheme: false
+        darkTheme: JSON.parse(localStorage.getItem('darkTheme')) || false
     },
     getters: {
         darkTheme(state) {
@@ -9,7 +9,9 @@ export default {
     },
     mutations: {
         toggleThemeState(state) {
-            state.darkTheme = !state.darkTheme
+            state.darkTheme = !state.darkTheme;
+
+            localStorage.setItem('darkTheme', JSON.stringify(state.darkTheme))
         }
     }
 }

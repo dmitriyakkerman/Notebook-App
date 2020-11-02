@@ -14,7 +14,7 @@
             </button>
         </div>
         <div class="categories__container">
-            <div v-if="filteredCategories.length">
+            <transition-group name="appear">
                 <div class="categories-item" v-for="category in filteredCategories" :key="category.id">
                     <div class="categories-item__title">{{ category.title }}</div>
                     <div class="categories-item__nav">
@@ -24,8 +24,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <no-results v-else>There is any category. Create new one!</no-results>
+            </transition-group>
+            <transition name="no-results">
+                <no-results v-if="!filteredCategories.length">There is any category. Create new one!</no-results>
+            </transition>
         </div>
     </div>
 </template>

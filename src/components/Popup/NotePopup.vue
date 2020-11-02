@@ -38,6 +38,7 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
+        props: ['pdata'],
         data() {
             return {
                 selected: 'default',
@@ -57,7 +58,7 @@
                     if (category.title === that.selected) {
                         id = category.id
                     }
-                })
+                });
 
                 return id;
             }
@@ -85,7 +86,6 @@
                     that.setModalMessage('Note has been submitted');
                     that.selected = 'default';
                     that.note.title = that.note.text = '';
-                    that.$router.push('/notes/' + newNote.id);
                 }
             }
         }

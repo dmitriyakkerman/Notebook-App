@@ -23,34 +23,40 @@
                         </div>
                     </div>
                     <div class="notes__items">
-                        <div class="notes-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
-                            <div class="notes-item__title">{{ note.title }}</div>
-                            <div class="notes-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
-                            <div class="notes-item__nav">
-                                <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
-                                <div class="notes-item__buttons">
-                                    <button class="notes-item__restore" title="Restore note" @click="restoreNote(note)"></button>
+                        <transition-group name="appear">
+                            <div class="notes-item" v-for="note in filteredNotes(notesTrash)" :key="note.id">
+                                <div class="notes-item__title">{{ note.title }}</div>
+                                <div class="notes-item__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
+                                <div class="notes-item__nav">
+                                    <router-link :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
+                                    <div class="notes-item__buttons">
+                                        <button class="notes-item__restore" title="Restore note" @click="restoreNote(note)"></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </transition-group>
                     </div>
                 </div>
             </div>
             <div v-if="categoriesTrash.length" class="trash__categories">
                 <h2>Categories</h2>
                 <div class="notes__items">
-                    <div class="notes-item" v-for="category in categoriesTrash" :key="category.id">
-                        <div class="notes-item__title">{{ category.title }}</div>
-                        <div class="notes-item__nav">
-                            <div class="notes-item__buttons">
-                                <button class="notes-item__restore" title="Restore note" @click="restoreCategory(category)"></button>
+                    <transition-group name="appear">
+                        <div class="notes-item" v-for="category in categoriesTrash" :key="category.id">
+                            <div class="notes-item__title">{{ category.title }}</div>
+                            <div class="notes-item__nav">
+                                <div class="notes-item__buttons">
+                                    <button class="notes-item__restore" title="Restore note" @click="restoreCategory(category)"></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </transition-group>
                 </div>
             </div>
         </div>
-        <no-results v-else>Trash box is empty!</no-results>
+        <transition name="no-results">
+            <no-results v-if="!notesTrash.length && !categoriesTrash.length">Trash box is empty!</no-results>
+        </transition>
     </div>
 </template>
 

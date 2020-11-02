@@ -25,7 +25,7 @@
            </button>
        </div>
        <div class="notes__container">
-           <div v-if="filteredNotes.length">
+           <transition-group name="appear">
                <div class="notes-item" v-for="note in filteredNotes" :key="note.id">
                    <div class="notes-item__title">{{ note.title }}</div>
                    <div class="notes-item__text" v-html="note.text"></div>
@@ -42,8 +42,10 @@
                        </div>
                    </div>
                </div>
-           </div>
-           <no-results v-else>There is any note. Create new one!</no-results>
+           </transition-group>
+           <transition name="no-results">
+               <no-results v-if="!filteredNotes.length">There is any note. Create new one!</no-results>
+           </transition>
        </div>
    </div>
 </template>
@@ -85,7 +87,7 @@
                     else {
                         return note.category.title === that.selectedCategory
                     }
-                })
+                });
 
                 return filteredNotes.filter(function (note) {
                     let filtered;
@@ -106,7 +108,6 @@
 
                     return filtered;
                 })
-
             }
         },
         methods: {
