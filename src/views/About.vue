@@ -56,6 +56,7 @@
                 <li>Light/dark theme</li>
                 <li><a href="https://github.com/dmitriyakkerman/arm-ui">Arm-UI</a> component library</li>
                 <li>Local storage usage</li>
+                <li>Responsive</li>
             </ul>
         </div>
     </div>

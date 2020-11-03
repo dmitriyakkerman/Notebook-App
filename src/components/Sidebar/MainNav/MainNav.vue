@@ -1,27 +1,44 @@
 <template>
     <ul class="main-nav">
-        <router-link tag="li" to="/" active-class="active" exact="" class="main-nav__item">
-            <a href="" class="main-nav__link">About</a>
-        </router-link>
-        <router-link tag="li" to="/notes" active-class="active" exact="" class="main-nav__item">
-            <a href="" class="main-nav__link">Notes</a>
-        </router-link>
-        <router-link tag="li" to="/categories" active-class="active" exact="" class="main-nav__item">
-            <a href="" class="main-nav__link">Categories</a>
-        </router-link>
-        <router-link tag="li" to="/favourite" active-class="active" exact="" class="main-nav__item">
-            <a href="" class="main-nav__link">Favourite</a>
-        </router-link>
-        <router-link tag="li" to="/trash" active-class="active" class="main-nav__item">
-            <a href="" class="main-nav__link">Trash</a>
+        <router-link
+                v-for="link in links"
+                :key="link.url"
+                :tag="link.tag"
+                :to="link.url"
+                active-class="active"
+                :exact="link.exact"
+                class="main-nav__item"
+                @click.native="$emit('closeSidebar')">
+            <a href="" class="main-nav__link">{{ link.title }}</a>
         </router-link>
     </ul>
+
 </template>
 
 <script>
 
     export default {
-
+        data() {
+            return {
+                links: [
+                    {
+                        tag: 'li', url: '/', title: 'About', exact: true
+                    },
+                    {
+                        tag: 'li', url: '/notes', title: 'Notes'
+                    },
+                    {
+                        tag: 'li', url: '/categories', title: 'Categories'
+                    },
+                    {
+                        tag: 'li', url: '/favourite', title: 'Favourite'
+                    },
+                    {
+                        tag: 'li', url: '/trash', title: 'Trash'
+                    }
+                ]
+            }
+        },
     }
 
 </script>

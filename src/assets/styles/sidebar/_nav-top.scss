@@ -42,3 +42,11 @@
     }
   }
 }
+
+@media(max-width: 767px) {
+
+  .nav-top {
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+}

@@ -39,4 +39,15 @@
       }
     }
   }
+
+  &__time {
+    margin-left: 10px;
+  }
+}
+
+@media(max-width: 767px) {
+
+  .nav-bottom {
+    margin-top: inherit;
+  }
 }

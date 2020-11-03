@@ -1,7 +1,7 @@
 <template>
     <div class="notebook-sidebar">
         <MenuTop></MenuTop>
-        <MainNav></MainNav>
+        <MainNav @closeSidebar="$emit('closeSidebar')"></MainNav>
         <NavBottom></NavBottom>
     </div>
 </template>

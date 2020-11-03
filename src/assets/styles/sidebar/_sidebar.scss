@@ -8,7 +8,28 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    background: $sidebar-bg;
+    background: #373737;
     color: $sidebar-color;
+    z-index: 9;
+  }
+}
+
+@media(max-width: 767px) {
+
+  .notebook {
+
+    &-sidebar {
+      position: fixed;
+      top: 70px;
+      transform: translateX(-100%);
+      width: 100%;
+      height: 100%;
+      background: #373737;
+      transition: transform .7s ease;
+
+      &.active {
+        transform: translateX(0);
+      }
+    }
   }
 }

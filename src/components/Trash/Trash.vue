@@ -8,19 +8,23 @@
                 <h2>Notes</h2>
                 <div class="trash__container">
                     <div class="main-bar">
-                        <div class="main-bar__filters">
-                            <label for="select-category">Select category</label>
-                            <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
-                                <option value="all">All</option>
-                                <option v-for="note in notesTrash" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
-                            </select>
-                            <label for="select-status">Select status</label>
-                            <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
-                                <option value="all">All</option>
-                                <option value="active">Active</option>
-                                <option value="expired">Expired</option>
-                            </select>
-                        </div>
+                        <form class="main-bar__filters">
+                            <div class="form-group">
+                                <label for="select-category">Select category</label>
+                                <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
+                                    <option value="all">All</option>
+                                    <option v-for="note in notesTrash" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="select-status">Select status</label>
+                                <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
+                                    <option value="all">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="expired">Expired</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
                     <div class="notes__items">
                         <transition-group name="appear">

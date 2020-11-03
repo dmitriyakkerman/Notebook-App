@@ -1,25 +1,31 @@
 <template>
    <div>
        <div class="main-bar">
-           <div class="main-bar__filters">
-               <label for="select-category">Select category</label>
-               <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
-                   <option value="all">All</option>
-                   <option v-for="category in categories" :key="category.id" :value="category.title">{{ category.title }}</option>
-               </select>
-               <label for="select-status">Select status</label>
-               <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
-                   <option value="all">All</option>
-                   <option value="active">Active</option>
-                   <option value="expired">Expired</option>
-               </select>
-               <label for="search-notes">Search Notes</label>
-               <input id="search-notes" type="text" class="main-bar__search" v-model="noteToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
-               <div class="search-loader" v-if="loading">
-                   <div></div>
-                   <div></div>
+           <form class="main-bar__filters">
+               <div class="form-group">
+                   <label for="select-category">Select category</label>
+                   <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
+                       <option value="all">All</option>
+                       <option v-for="category in categories" :key="category.id" :value="category.title">{{ category.title }}</option>
+                   </select>
                </div>
-           </div>
+               <div class="form-group">
+                   <label for="select-status">Select status</label>
+                   <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
+                       <option value="all">All</option>
+                       <option value="active">Active</option>
+                       <option value="expired">Expired</option>
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label for="search-notes">Search Notes</label>
+                   <input id="search-notes" type="text" class="main-bar__search" v-model="noteToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
+                   <div class="search-loader" v-if="loading">
+                       <div></div>
+                       <div></div>
+                   </div>
+               </div>
+           </form>
            <button class="main-bar__btn j-popup popup-note" @click="addNote">
                <i></i>
            </button>

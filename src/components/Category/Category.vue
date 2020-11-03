@@ -1,14 +1,16 @@
 <template>
     <div class="category__container">
         <div class="main-bar main-bar--category">
-            <div class="main-bar__filters">
-                <label for="select-category">Select status</label>
-                <select id="select-category" class="main-bar__select-status" v-model="selectedStatus">
-                    <option value="all">All</option>
-                    <option value="active">Active</option>
-                    <option value="expired">Expired</option>
-                </select>
-            </div>
+            <form class="main-bar__filters">
+                <div class="form-group">
+                    <label for="select-category">Select status</label>
+                    <select id="select-category" class="main-bar__select-status" v-model="selectedStatus">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="expired">Expired</option>
+                    </select>
+                </div>
+            </form>
             <div class="main-bar__buttons">
                 <button class="main-bar__edit j-popup popup-category" title="Edit category" @click="editCategory(category.id, $event)"></button>
                 <button class="main-bar__remove" title="Remove category" @click="$emit('removeCategory', category.id)"></button>

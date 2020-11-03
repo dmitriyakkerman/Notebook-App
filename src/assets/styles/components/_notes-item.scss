@@ -1,6 +1,7 @@
 .notes-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-height: 25px;
   padding-bottom: 10px;
   margin-bottom: 20px;
@@ -54,7 +55,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 30%;
+    width: 300px;
   }
 
   &__category {
@@ -77,7 +78,7 @@
   }
 
   &__buttons {
-    width: 30%;
+    width: 140px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -95,6 +96,8 @@
     background: none;
     background-image: url("../../assets/img/star.svg");
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
     transition: all .3s ease;
 
@@ -110,6 +113,8 @@
     background: none;
     background-image: url("../../assets/img/look.svg");
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   &__remove {
@@ -120,6 +125,8 @@
     background: none;
     background-image: url("../../assets/img/trash.svg");
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
     transition: all .3s ease;
   }
@@ -133,5 +140,49 @@
     background-image: url("../../assets/img/restore.svg");
     background-size: contain;
     cursor: pointer;
+  }
+}
+
+@media(max-width: 1199px) {
+
+  .notes-item {
+
+    &__text {
+      display: none;
+    }
+
+    &__category {
+      display: none;
+    }
+
+    &__nav {
+      width: 150px;
+    }
+  }
+}
+
+@media(max-width: 575px) {
+
+  .notes-item {
+
+    &__title {
+      width: 90%;
+    }
+
+    &__status {
+      display: none;
+    }
+
+    &__buttons {
+      width: 115px;
+
+      > * {
+        margin-left: 10px;
+      }
+    }
+
+    &__nav {
+      width: 110px;
+    }
   }
 }
