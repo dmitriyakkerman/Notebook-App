@@ -38,7 +38,6 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
-        props: ['pdata'],
         data() {
             return {
                 selected: 'default',
