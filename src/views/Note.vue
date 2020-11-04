@@ -41,9 +41,10 @@
                 this.updateFavouriteNote(id)
             },
             editNote(note, e) {
+                let that = this;
                 let closest = e.target.closest('.j-popup');
                 if(closest) {
-                    this.setPopupComponent(closest, note);
+                    that.setPopupComponent({closest, note});
                 }
 
                 window.popup.manualOpen();

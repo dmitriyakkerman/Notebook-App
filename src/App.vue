@@ -45,9 +45,6 @@ export default {
     toggleSidebar() {
       this.sidebarOpen = !this.sidebarOpen
     }
-  },
-  mounted() {
-    document.title = 'Notebook App'
   }
 }
 

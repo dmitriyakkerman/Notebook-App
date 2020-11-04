@@ -20,7 +20,7 @@
             </div>
             <div class="notes__container">
                 <div v-if="notesByCategory.length">
-                    <NotesItem v-for="note in notesByCategory" :key="note.id" :note="note" :isCategory="'true'"></NotesItem>
+                    <NotesItem v-for="note in notesByCategory" :key="note.id" :note="note" :isCategory="true"></NotesItem>
                 </div>
                 <no-results v-else>There is any note. Create new one!</no-results>
             </div>
@@ -92,7 +92,7 @@
             editCategory(id, e) {
                 let closest = e.target.closest('.j-popup');
                 if(closest) {
-                    this.setPopupComponent(closest);
+                    this.setPopupComponent({closest});
                 }
 
                 window.popup.manualOpen();

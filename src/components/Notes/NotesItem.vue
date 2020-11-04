@@ -43,7 +43,7 @@
             addNote(e) {
                 let closest = e.target.closest('.j-popup');
                 if(closest) {
-                    this.setPopupComponent(closest);
+                    this.setPopupComponent({closest});
                 }
                 window.popup.manualOpen();
             },
