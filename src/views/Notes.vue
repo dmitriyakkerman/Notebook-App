@@ -122,7 +122,7 @@
             restoreNote(note) {
                 this.restoreCategoryByNote(note);
                 this.moveNoteFromTrash(note);
-            },
+            }
         }
     }
 
