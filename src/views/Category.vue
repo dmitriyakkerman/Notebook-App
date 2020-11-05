@@ -73,9 +73,10 @@
             }
         },
         methods: {
-            ...mapActions(['deleteCategory', 'updateFavouriteNote', 'deleteNote', 'moveNoteToTrash']),
+            ...mapActions(['deleteCategory', 'updateFavouriteNote', 'deleteNote', 'moveCategoryToTrash', 'moveNoteToTrash']),
             ...mapMutations(['removeNotesByCategory', 'setPopupComponent', 'toggleModal', 'setModalMessage']),
             removeCategory(id) {
+                this.moveCategoryToTrash(id);
                 this.$router.push('/categories');
                 this.deleteCategory(id);
                 this.removeNotesByCategory(id);
