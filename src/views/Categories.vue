@@ -1,9 +1,9 @@
 <template>
     <div class="categories">
-        <h1 class="title">My categories</h1>
+        <h1 class="title">Categories</h1>
         <div class="main-bar main-bar--categories">
             <form class="main-bar__filters">
-                <Search :categoryToSearch="noteToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
+                <Search :categoryToSearch="categoryToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
             </form>
             <button class="main-bar__btn j-popup popup-category" @click="addCategory">
                 <i></i>
@@ -56,10 +56,14 @@
         methods: {
             ...mapMutations(['setPopupComponent']),
             initLoading() {
-                this.loading = true
+                this.loading = true;
             },
-            debounce: _.debounce(function () {
+            removeLoading() {
                 this.loading = false;
+            },
+            debounce: _.debounce(function (value) {
+                this.categoryToSearch = value;
+                this.removeLoading();
             }, 300),
             addCategory(e) {
                 let closest = e.target.closest('.j-popup');

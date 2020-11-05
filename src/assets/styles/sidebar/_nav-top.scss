@@ -1,5 +1,6 @@
 .nav-top {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 20px;
 
@@ -41,6 +42,42 @@
       }
     }
   }
+
+  &__brand {
+    display: flex;
+    width: 100%;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+
+    h1 {
+      margin-left: 10px;
+      font-size: 25px;
+      color: #e6e6e6;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 25px;
+  }
+}
+
+@media(max-width: 1199px) {
+
+  .nav-top {
+
+    &__brand {
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  }
 }
 
 @media(max-width: 767px) {
@@ -48,5 +85,13 @@
   .nav-top {
     justify-content: flex-start;
     padding-left: 0;
+
+    &__brand {
+      display: none;
+    }
+
+    &__buttons {
+      margin-top: 0;
+    }
   }
 }

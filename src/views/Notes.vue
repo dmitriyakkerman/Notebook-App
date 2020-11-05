@@ -1,6 +1,6 @@
 <template>
     <div class="notes">
-        <h1 class="title">My notes</h1>
+        <h1 class="title">Notes</h1>
         <div class="main-bar">
             <form class="main-bar__filters">
                 <SelectCategory :selected="selectedCategory" :notes="notes" @categoryValue="categoryValue"></SelectCategory>
