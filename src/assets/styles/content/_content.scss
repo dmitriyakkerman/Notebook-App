@@ -1,7 +1,7 @@
 .notebook {
 
   &-content {
-    width: 80%;
+    width: -webkit-fill-available;
     height: 100%;
     padding: 15px 50px;
     box-sizing: border-box;
