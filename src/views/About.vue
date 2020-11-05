@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        <Title>Notebook App</Title>
+        <Title>About</Title>
         <div class="about__text">
             <div>
                 Open-source notes app. Check out the project on <a href="https://github.com/dmitriyakkerman/Notebook-App">https://github.com/dmitriyakkerman/Notebook-App</a>
