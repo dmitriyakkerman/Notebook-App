@@ -4,14 +4,7 @@
         <div class="category__container">
             <div class="main-bar main-bar--category">
                 <form class="main-bar__filters">
-                    <div class="form-group">
-                        <label for="select-category">Select status</label>
-                        <select id="select-category" class="main-bar__select-status" v-model="selectedStatus">
-                            <option value="all">All</option>
-                            <option value="active">Active</option>
-                            <option value="expired">Expired</option>
-                        </select>
-                    </div>
+                    <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
                 </form>
                 <div class="main-bar__buttons">
                     <button class="main-bar__edit j-popup popup-category" title="Edit category" @click="editCategory(category.id, $event)"></button>
@@ -33,12 +26,14 @@
 
     import NotesItem from "../components/Notes/NotesItem";
     import NoResults from "../components/Slots/NoResults";
+    import SelectStatus from "../components/MainBar/SelectStatus";
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
         components: {
             NotesItem,
-            NoResults
+            NoResults,
+            SelectStatus
         },
         data() {
             return {
@@ -92,10 +87,13 @@
             editCategory(id, e) {
                 let closest = e.target.closest('.j-popup');
                 if(closest) {
-                    this.setPopupComponent({closest});
+                    this.setPopupComponent(closest);
                 }
 
                 window.popup.manualOpen();
+            },
+            statusValue(value) {
+                this.selectedStatus = value
             }
         }
     }

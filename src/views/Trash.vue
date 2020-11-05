@@ -17,14 +17,7 @@
                                     <option v-for="note in notesTrash" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="select-status">Select status</label>
-                                <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
-                                    <option value="all">All</option>
-                                    <option value="active">Active</option>
-                                    <option value="expired">Expired</option>
-                                </select>
-                            </div>
+                            <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
                         </form>
                     </div>
                     <div class="notes__items">
@@ -54,13 +47,15 @@
     import NotesItem from "../components/Notes/NotesItem";
     import CategoriesItem from "../components/Categories/CategoriesItem";
     import NoResults from "../components/Slots/NoResults";
+    import SelectStatus from "../components/MainBar/SelectStatus";
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
         components: {
             NotesItem,
             CategoriesItem,
-            NoResults
+            NoResults,
+            SelectStatus
         },
         data() {
             return {
@@ -109,6 +104,9 @@
             cleanTrash() {
                 this.cleanNotesTrash();
                 this.cleanCategoriesTrash();
+            },
+            statusValue(value) {
+                this.selectedStatus = value
             }
         }
     }

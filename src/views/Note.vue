@@ -5,7 +5,10 @@
             <div class="main-bar">
                 <div class="main-bar__category">{{ note.category.title }}</div>
                 <div class="main-bar__date">
-                    <div class="main-bar__status" :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}" :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''"></div>
+                    <div class="main-bar__status"
+                         :class="{active: note.deadline && new Date(note.deadline) > Date.now(), expired: note.deadline && new Date(note.deadline) < Date.now()}"
+                         :title="note.deadline ? (new Date(note.deadline) > Date.now() ? 'active' : 'outdated') : ''">
+                    </div>
                     <span>{{ note.deadline ? note.deadline : '' }}</span>
                 </div>
                 <div class="main-bar__buttons">
@@ -44,7 +47,7 @@
                 let that = this;
                 let closest = e.target.closest('.j-popup');
                 if(closest) {
-                    that.setPopupComponent({closest, note});
+                    that.setPopupComponent(closest);
                 }
 
                 window.popup.manualOpen();

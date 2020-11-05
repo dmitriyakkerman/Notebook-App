@@ -1,7 +1,7 @@
 <template>
     <div class="popup">
         <div>
-            <component :is="popupComponent" :popupComponentData="popupComponentData"></component>
+            <component :is="popupComponent"></component>
         </div>
     </div>
 </template>
@@ -19,12 +19,9 @@
             CategoryPopup
         },
         computed: {
-            ...mapGetters(['popupForm', 'popupData']),
+            ...mapGetters(['popupForm']),
           popupComponent() {
               return this.popupForm.type
-          },
-          popupComponentData() {
-              return this.popupData
           }
         },
         mounted() {

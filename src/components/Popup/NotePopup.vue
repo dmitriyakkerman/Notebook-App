@@ -38,14 +38,13 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
-        props: ['popupComponentData'],
         data() {
             return {
-                selected: Object.keys(this.popupComponentData).length ? this.popupComponentData.category.title : '',
+                selected: '',
                 note: {
-                    title: Object.keys(this.popupComponentData).length ? this.popupComponentData.title : '',
-                    text: Object.keys(this.popupComponentData).length ? this.popupComponentData.text : '',
-                    deadline: Object.keys(this.popupComponentData).length ? this.popupComponentData.deadline : null
+                    title: '',
+                    text: '',
+                    deadline: null
                 }
             }
         },
@@ -61,6 +60,9 @@
                 });
 
                 return id;
+            },
+            popupData() {
+                return this.popupComponentData
             }
         },
         methods: {

@@ -3,21 +3,8 @@
         <h1 class="title">Favourite notes</h1>
         <div class="main-bar">
             <form class="main-bar__filters">
-                <div class="form-group">
-                    <label for="select-category">Select category</label>
-                    <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
-                        <option value="all">All</option>
-                        <option v-for="note in favourite" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="select-status">Select status</label>
-                    <select id="select-status" class="main-bar__select-status" v-model="selectedStatus">
-                        <option value="all">All</option>
-                        <option value="active">Active</option>
-                        <option value="expired">Expired</option>
-                    </select>
-                </div>
+                <SelectCategory :selected="selectedCategory" :notes="favourite" @categoryValue="categoryValue"></SelectCategory>
+                <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
             </form>
         </div>
         <div class="notes__container">
@@ -35,12 +22,16 @@
 
     import NotesItem from "../components/Notes/NotesItem";
     import NoResults from "../components/Slots/NoResults";
+    import SelectCategory from "../components/MainBar/SelectCategory";
+    import SelectStatus from "../components/MainBar/SelectStatus";
     import {mapGetters, mapActions} from 'vuex'
 
     export default {
         components: {
             NotesItem,
-            NoResults
+            NoResults,
+            SelectCategory,
+            SelectStatus
         },
         data() {
             return {
@@ -88,6 +79,12 @@
             },
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
+            },
+            statusValue(value) {
+                this.selectedStatus = value
+            },
+            categoryValue(value) {
+                this.selectedCategory = value
             }
         }
     }
