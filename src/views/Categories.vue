@@ -3,14 +3,7 @@
         <h1 class="title">My categories</h1>
         <div class="main-bar main-bar--categories">
             <form class="main-bar__filters">
-                <div class="form-group">
-                    <label for="search-category">Search category</label>
-                    <input id="search-category" type="text" class="main-bar__search" v-model="categoryToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
-                    <div class="search-loader" v-if="loading">
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
+                <Search :categoryToSearch="noteToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
             </form>
             <button class="main-bar__btn j-popup popup-category" @click="addCategory">
                 <i></i>
@@ -31,13 +24,15 @@
 
     import CategoriesItem from "../components/Categories/CategoriesItem";
     import NoResults from "../components/Slots/NoResults";
+    import Search from "../components/MainBar/Search";
     import _ from 'lodash'
     import {mapGetters, mapMutations} from 'vuex'
 
     export default {
         components: {
             CategoriesItem,
-            NoResults
+            NoResults,
+            Search
         },
         data() {
             return {

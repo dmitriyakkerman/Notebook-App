@@ -5,14 +5,7 @@
             <form class="main-bar__filters">
                 <SelectCategory :selected="selectedCategory" :notes="notes" @categoryValue="categoryValue"></SelectCategory>
                 <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
-                <div class="form-group">
-                    <label for="search-notes">Search Notes</label>
-                    <input id="search-notes" type="text" class="main-bar__search" v-model="noteToSearch" @keydown="initLoading" @input="debounce" @blur="loading=false">
-                    <div class="search-loader" v-if="loading">
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
+                <Search :categoryToSearch="noteToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
             </form>
             <button class="main-bar__btn j-popup popup-note" @click="addNote">
                 <i></i>
@@ -35,6 +28,7 @@
     import NoResults from "../components/Slots/NoResults";
     import SelectCategory from "../components/MainBar/SelectCategory";
     import SelectStatus from "../components/MainBar/SelectStatus";
+    import Search from "../components/MainBar/Search";
     import _ from 'lodash'
     import {mapGetters, mapMutations} from 'vuex'
 
@@ -43,7 +37,8 @@
             NotesItem,
             NoResults,
             SelectCategory,
-            SelectStatus
+            SelectStatus,
+            Search
         },
         data() {
             return {
@@ -107,8 +102,12 @@
             initLoading() {
                 this.loading = true;
             },
-            debounce: _.debounce(function () {
+            removeLoading() {
                 this.loading = false;
+            },
+            debounce: _.debounce(function (value) {
+                this.noteToSearch = value;
+                this.removeLoading();
             }, 300),
             restoreNote(note) {
                 this.restoreCategoryByNote(note);

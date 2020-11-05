@@ -10,13 +10,7 @@
                 <div class="trash__container">
                     <div class="main-bar">
                         <form class="main-bar__filters">
-                            <div class="form-group">
-                                <label for="select-category">Select category</label>
-                                <select id="select-category" class="main-bar__select-category" v-model="selectedCategory">
-                                    <option value="all">All</option>
-                                    <option v-for="note in notesTrash" :key="note.id" :value="note.category.title">{{ note.category.title }}</option>
-                                </select>
-                            </div>
+                            <SelectCategory :selected="selectedCategory" :notes="notesTrash" @categoryValue="categoryValue"></SelectCategory>
                             <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
                         </form>
                     </div>
@@ -47,6 +41,7 @@
     import NotesItem from "../components/Notes/NotesItem";
     import CategoriesItem from "../components/Categories/CategoriesItem";
     import NoResults from "../components/Slots/NoResults";
+    import SelectCategory from "../components/MainBar/SelectCategory";
     import SelectStatus from "../components/MainBar/SelectStatus";
     import {mapGetters, mapActions} from 'vuex'
 
@@ -55,6 +50,7 @@
             NotesItem,
             CategoriesItem,
             NoResults,
+            SelectCategory,
             SelectStatus
         },
         data() {
@@ -107,6 +103,9 @@
             },
             statusValue(value) {
                 this.selectedStatus = value
+            },
+            categoryValue(value) {
+                this.selectedCategory = value
             }
         }
     }
