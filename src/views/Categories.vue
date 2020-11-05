@@ -26,7 +26,7 @@
     import CategoriesItem from "../components/Categories/CategoriesItem";
     import NoResults from "../components/Slots/NoResults";
     import Search from "../components/MainBar/Search";
-    import _ from 'lodash'
+    import {debounce} from 'lodash'
     import {mapGetters, mapMutations} from 'vuex'
 
     export default {
@@ -63,7 +63,7 @@
             removeLoading() {
                 this.loading = false;
             },
-            debounce: _.debounce(function (value) {
+            debounce: debounce(function (value) {
                 this.categoryToSearch = value;
                 this.removeLoading();
             }, 300),
