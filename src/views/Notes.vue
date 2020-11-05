@@ -1,6 +1,6 @@
 <template>
     <div class="notes">
-        <h1 class="title">Notes</h1>
+        <Title>Notes</Title>
         <div class="main-bar">
             <form class="main-bar__filters">
                 <SelectCategory :selected="selectedCategory" :notes="notes" @categoryValue="categoryValue"></SelectCategory>
@@ -24,6 +24,7 @@
 
 <script>
 
+    import Title from "../components/Slots/Title";
     import NotesItem from "../components/Notes/NotesItem";
     import NoResults from "../components/Slots/NoResults";
     import SelectCategory from "../components/MainBar/SelectCategory";
@@ -34,6 +35,7 @@
 
     export default {
         components: {
+            Title,
             NotesItem,
             NoResults,
             SelectCategory,

@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        <h1 class="title">Notebook App</h1>
+        <Title>Notebook App</Title>
         <div class="about__text">
             <div>
                 Open-source notes app. Check out the project on <a href="https://github.com/dmitriyakkerman/Notebook-App">https://github.com/dmitriyakkerman/Notebook-App</a>
@@ -64,8 +64,12 @@
 
 <script>
 
-    export default {
+    import Title from "../components/Slots/Title";
 
+    export default {
+        components: {
+            Title
+        }
     }
 
 </script>

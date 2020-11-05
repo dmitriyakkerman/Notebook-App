@@ -1,6 +1,6 @@
 <template>
     <div class="trash">
-        <h1 class="title">Trash</h1>
+        <Title>Trash</Title>
         <div v-if="notesTrash.length || categoriesTrash.length">
             <button class="trash__clean" title="Clear trash box" @click="cleanTrash">
                 <i></i>
@@ -38,15 +38,17 @@
 
 <script>
 
+    import Title from "../components/Slots/Title";
     import NotesItem from "../components/Notes/NotesItem";
     import CategoriesItem from "../components/Categories/CategoriesItem";
     import NoResults from "../components/Slots/NoResults";
     import SelectCategory from "../components/MainBar/SelectCategory";
     import SelectStatus from "../components/MainBar/SelectStatus";
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
         components: {
+            Title,
             NotesItem,
             CategoriesItem,
             NoResults,
@@ -64,6 +66,7 @@
         },
         methods: {
             ...mapActions(['cleanNotesTrash', 'cleanCategoriesTrash']),
+            ...mapMutations(['toggleModal', 'setModalMessage']),
             filteredNotes(notes) {
                 let that = this;
                 let filteredNotes;
@@ -100,6 +103,8 @@
             cleanTrash() {
                 this.cleanNotesTrash();
                 this.cleanCategoriesTrash();
+                this.toggleModal();
+                this.setModalMessage('Trash box has been cleared');
             },
             statusValue(value) {
                 this.selectedStatus = value

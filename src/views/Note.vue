@@ -1,6 +1,6 @@
 <template>
     <div v-if="note" class="note">
-        <h1 class="title">{{ note.title }}</h1>
+        <Title>{{ note.title }}</Title>
         <div class="note__container">
             <div class="main-bar">
                 <div class="main-bar__category">{{ note.category.title }}</div>
@@ -12,7 +12,7 @@
                     <span>{{ note.deadline ? note.deadline : '' }}</span>
                 </div>
                 <div class="main-bar__buttons">
-                    <button class="main-bar__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
+                    <button class="main-bar__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id, $event)"></button>
                     <button class="main-bar__edit j-popup popup-note" title="Edit note" @click="editNote(note, $event)"></button>
                     <button class="main-bar__remove" title="Remove Note" @click="removeNote(note.id)"></button>
                 </div>
@@ -24,9 +24,13 @@
 
 <script>
 
+    import Title from "../components/Slots/Title";
     import {mapGetters, mapMutations, mapActions} from 'vuex';
 
     export default {
+        components: {
+            Title
+        },
         computed: {
             ...mapGetters(['noteBy']),
             note() {
@@ -35,13 +39,23 @@
         },
         methods: {
             ...mapActions(['deleteNote', 'updateFavouriteNote']),
-            ...mapMutations(['setPopupComponent']),
+            ...mapMutations(['setPopupComponent', 'toggleModal', 'setModalMessage']),
             removeNote(id) {
                 this.$router.push('/notes');
                 this.deleteNote(id);
+                this.toggleModal();
+                this.setModalMessage('Note has been moved to trash');
             },
-            makeFavourite(id) {
-                this.updateFavouriteNote(id)
+            makeFavourite(id, $event) {
+                this.updateFavouriteNote(id);
+                this.toggleModal();
+
+                if($event.target.classList.contains('active')) {
+                    this.setModalMessage('Note has been removed from favourites');
+                }
+                else {
+                    this.setModalMessage('Note has been added to favourites');
+                }
             },
             editNote(note, e) {
                 let that = this;

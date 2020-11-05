@@ -1,6 +1,6 @@
 <template>
     <div class="favourite">
-        <h1 class="title">Favourite notes</h1>
+        <Title>Favourite notes</Title>
         <div class="main-bar">
             <form class="main-bar__filters">
                 <SelectCategory :selected="selectedCategory" :notes="favourite" @categoryValue="categoryValue"></SelectCategory>
@@ -20,6 +20,7 @@
 
 <script>
 
+    import Title from "../components/Slots/Title";
     import NotesItem from "../components/Notes/NotesItem";
     import NoResults from "../components/Slots/NoResults";
     import SelectCategory from "../components/MainBar/SelectCategory";
@@ -28,6 +29,7 @@
 
     export default {
         components: {
+            Title,
             NotesItem,
             NoResults,
             SelectCategory,

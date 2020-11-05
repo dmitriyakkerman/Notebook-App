@@ -10,7 +10,7 @@
             <div class="notes-item__nav">
                 <router-link v-if="!isCategory && !isTrash" :to="'/categories/' + note.category.id" class="notes-item__category" title="Note category">{{ note.category.title }}</router-link>
                 <div class="notes-item__buttons">
-                    <button v-if="!isTrash" class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id)"></button>
+                    <button v-if="!isTrash" class="notes-item__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id, $event)"></button>
                     <router-link v-if="!isTrash" :to="'/notes/' + note.id" class="notes-item__look" title="View note"></router-link>
                     <button v-if="!isTrash" class="notes-item__remove" title="Remove note" @click.prevent="removeNote(note.id)"></button>
                     <button v-if="isTrash" class="notes-item__restore" title="Restore note" @click="restoreNote(note)"></button>
@@ -32,13 +32,23 @@
         },
         methods: {
             ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveNoteToTrash', 'moveNoteFromTrash', 'restoreCategoryByNote']),
-            ...mapMutations(['setPopupComponent']),
-            makeFavourite(id) {
-                this.updateFavouriteNote(id)
+            ...mapMutations(['setPopupComponent', 'toggleModal', 'setModalMessage']),
+            makeFavourite(id, $event) {
+                this.updateFavouriteNote(id);
+                this.toggleModal();
+
+                if($event.target.classList.contains('active')) {
+                    this.setModalMessage('Note has been removed from favourites');
+                }
+                else {
+                    this.setModalMessage('Note has been added to favourites');
+                }
             },
             removeNote(id) {
                 this.moveNoteToTrash(id);
                 this.deleteNote(id);
+                this.toggleModal();
+                this.setModalMessage('Note has been moved to trash');
             },
             addNote(e) {
                 let closest = e.target.closest('.j-popup');
@@ -50,6 +60,8 @@
             restoreNote(note) {
                 this.restoreCategoryByNote(note);
                 this.moveNoteFromTrash(note);
+                this.toggleModal();
+                this.setModalMessage('Note has been restored from trash');
             }
         }
     }

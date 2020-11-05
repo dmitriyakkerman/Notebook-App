@@ -1,6 +1,6 @@
 <template>
     <div class="categories">
-        <h1 class="title">Categories</h1>
+        <Title>Categories</Title>
         <div class="main-bar main-bar--categories">
             <form class="main-bar__filters">
                 <Search :categoryToSearch="categoryToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
@@ -22,6 +22,7 @@
 
 <script>
 
+    import Title from "../components/Slots/Title";
     import CategoriesItem from "../components/Categories/CategoriesItem";
     import NoResults from "../components/Slots/NoResults";
     import Search from "../components/MainBar/Search";
@@ -30,6 +31,7 @@
 
     export default {
         components: {
+            Title,
             CategoriesItem,
             NoResults,
             Search

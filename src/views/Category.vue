@@ -1,6 +1,6 @@
 <template>
     <div class="category">
-        <h1 class="title">{{ category.title }}</h1>
+        <Title>{{ category.title }}</Title>
         <div class="category__container">
             <div class="main-bar main-bar--category">
                 <form class="main-bar__filters">
@@ -12,10 +12,12 @@
                 </div>
             </div>
             <div class="notes__container">
-                <div v-if="notesByCategory.length">
+                <transition-group name="appear">
                     <NotesItem v-for="note in notesByCategory" :key="note.id" :note="note" :isCategory="true"></NotesItem>
-                </div>
-                <no-results v-else>There is any note. Create new one!</no-results>
+                </transition-group>
+                <transition name="no-results">
+                    <no-results v-if="!notesByCategory.length">There is any note. Create new one!</no-results>
+                </transition>
             </div>
         </div>
     </div>
@@ -23,7 +25,7 @@
 
 <script>
 
-
+    import Title from "../components/Slots/Title";
     import NotesItem from "../components/Notes/NotesItem";
     import NoResults from "../components/Slots/NoResults";
     import SelectStatus from "../components/MainBar/SelectStatus";
@@ -31,6 +33,7 @@
 
     export default {
         components: {
+            Title,
             NotesItem,
             NoResults,
             SelectStatus
@@ -71,11 +74,13 @@
         },
         methods: {
             ...mapActions(['deleteCategory', 'updateFavouriteNote', 'deleteNote', 'moveNoteToTrash']),
-            ...mapMutations(['removeNotesByCategory', 'setPopupComponent']),
+            ...mapMutations(['removeNotesByCategory', 'setPopupComponent', 'toggleModal', 'setModalMessage']),
             removeCategory(id) {
                 this.$router.push('/categories');
                 this.deleteCategory(id);
                 this.removeNotesByCategory(id);
+                this.toggleModal();
+                this.setModalMessage('Category has been moved to trash');
             },
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
