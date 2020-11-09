@@ -5,6 +5,16 @@
   padding: 40px;
   background: #4b4b4b;
   text-align: center;
-  color: #ffc107;;
+  color: #ffc107;
   z-index: 999;
+}
+
+@media(max-width: 991px) {
+
+  .modal {
+    left: 50%;
+    right: inherit;
+    transform: translateX(-50%);
+    width: 100%;
+  }
 }
