@@ -24,7 +24,7 @@
 
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
-import ModalForm from "./components/Modal/ModalForm";
+import ModalForm from "./components/Modals/ModalForm";
 
 import {mapGetters} from 'vuex'
 
@@ -33,8 +33,8 @@ export default {
   components: {
     Header,
     Sidebar,
-    Popup: () => import('./components/Popup/Popup.vue'),
-    ModalMessage: () => import('./components/Modal/ModalMessage.vue'),
+    Popup: () => import('./components/Popups/Popup.vue'),
+    ModalMessage: () => import('./components/Modals/ModalMessage.vue'),
     ModalForm
   },
   data() {

@@ -31,6 +31,9 @@ export default {
             state.modalForm.isOpen = !state.modalForm.isOpen;
             state.modalForm.component = data.component;
             state.modalForm.data = data.data;
+        },
+        closeModalForm(state) {
+            state.modalForm.isOpen = false;
         }
     }
 }
