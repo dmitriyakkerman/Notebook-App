@@ -39,9 +39,6 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
-        props: {
-            popupData: Object
-        },
         data() {
             return {
                 selected: 'default',
