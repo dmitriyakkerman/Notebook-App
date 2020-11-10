@@ -7,7 +7,7 @@
                 <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
                 <Search :categoryToSearch="noteToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
             </form>
-            <button class="main-bar__btn j-popup popup-note" @click="addNote">
+            <button class="main-bar__btn" @click="addNote">
                 <i></i>
             </button>
         </div>
@@ -104,13 +104,13 @@
             }
         },
         methods: {
-            ...mapMutations(['setPopupComponent']),
-            addNote(e) {
-                let closest = e.target.closest('.j-popup');
-                if(closest) {
-                    this.setPopupComponent(closest);
-                }
-                window.popup.manualOpen();
+            ...mapMutations(['toggleModalForm']),
+            addNote() {
+                this.toggleModalForm(
+                    {
+                        component: 'ModalAddNote', data: {}
+                    }
+                );
             },
             initLoading() {
                 this.loading = true;

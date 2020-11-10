@@ -5,7 +5,7 @@
             <form class="main-bar__filters">
                 <Search :categoryToSearch="categoryToSearch" :loading="loading" @initLoading="initLoading" @removeLoading="removeLoading" @debounce="debounce"></Search>
             </form>
-            <button class="main-bar__btn j-popup popup-category" @click="addCategory">
+            <button class="main-bar__btn" @click="addCategory">
                 <i></i>
             </button>
         </div>
@@ -56,7 +56,7 @@
             }
         },
         methods: {
-            ...mapMutations(['setPopupComponent']),
+            ...mapMutations(['toggleModalForm']),
             initLoading() {
                 this.loading = true;
             },
@@ -67,12 +67,12 @@
                 this.categoryToSearch = value;
                 this.removeLoading();
             }, 300),
-            addCategory(e) {
-                let closest = e.target.closest('.j-popup');
-                if(closest) {
-                    this.setPopupComponent(closest);
-                }
-                window.popup.manualOpen();
+            addCategory() {
+                this.toggleModalForm(
+                    {
+                        component: 'ModalAddCategory', data: {}
+                    }
+                );
             }
         }
     }

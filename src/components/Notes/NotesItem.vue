@@ -32,7 +32,7 @@
         },
         methods: {
             ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveNoteToTrash', 'moveNoteFromTrash', 'restoreCategoryByNote']),
-            ...mapMutations(['setPopupComponent', 'toggleModalMessage']),
+            ...mapMutations(['toggleModalMessage']),
             makeFavourite(id, $event) {
                 this.updateFavouriteNote(id);
 
@@ -48,12 +48,8 @@
                 this.deleteNote(id);
                 this.toggleModalMessage('Note has been moved to trash');
             },
-            addNote(e) {
-                let closest = e.target.closest('.j-popup');
-                if(closest) {
-                    this.setPopupComponent(closest);
-                }
-                window.popup.manualOpen();
+            addNote() {
+
             },
             restoreNote(note) {
                 this.restoreCategoryByNote(note);

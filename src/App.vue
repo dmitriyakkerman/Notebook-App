@@ -9,9 +9,7 @@
       </div>
     </div>
 
-    <Popup></Popup>
-
-    <ModalForm></ModalForm>
+    <Modal></Modal>
 
     <transition name="slideDown">
       <ModalMessage v-if="modalMessage.isOpen"></ModalMessage>
@@ -24,7 +22,6 @@
 
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
-import ModalForm from "./components/Modals/ModalForm";
 
 import {mapGetters} from 'vuex'
 
@@ -33,9 +30,8 @@ export default {
   components: {
     Header,
     Sidebar,
-    Popup: () => import('./components/Popups/Popup.vue'),
-    ModalMessage: () => import('./components/Modals/ModalMessage.vue'),
-    ModalForm
+    Modal: () => import('./components/Modals/Modal.vue'),
+    ModalMessage: () => import('./components/Modals/ModalMessage.vue')
   },
   data() {
     return {

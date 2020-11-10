@@ -6,7 +6,7 @@ export default {
         },
         modalForm: {
             isOpen: false,
-            component: 'ModalNote',
+            component: 'ModalEditNote',
             data: {}
         }
     },

@@ -1,6 +1,6 @@
 <template>
-    <div class="category-popup">
-        <h3 class="popup__title">Category form</h3>
+    <div class="modal category-modal">
+        <h3 class="modal__title">Category form</h3>
         <form action="" class="form" @submit.prevent="addCategory">
             <div class="form-group">
                 <div class="form__title">
@@ -9,6 +9,7 @@
                 </div>
             </div>
             <input type="submit" class="form__submit" value="Submit">
+            <a href="" class="modal__close" @click.prevent="closeModal"></a>
         </form>
     </div>
 </template>
@@ -27,7 +28,7 @@
         },
         methods: {
             ...mapActions(['postCategory']),
-            ...mapMutations(['toggleModalMessage']),
+            ...mapMutations(['toggleModalMessage', 'closeModalForm']),
             addCategory() {
                 let that = this;
                 if(this.category.title.trim()) {
@@ -39,7 +40,11 @@
                     that.postCategory(newCategory);
                     that.toggleModalMessage('Category has been submitted');
                     that.category.title = '';
+                    that.closeModal();
                 }
+            },
+            closeModal() {
+                this.closeModalForm();
             }
         }
     }

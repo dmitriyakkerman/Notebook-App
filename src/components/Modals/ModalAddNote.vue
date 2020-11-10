@@ -1,7 +1,6 @@
 <template>
-    <div class="note-popup">
-        <h3 class="popup__title">Note form</h3>
-        {{ popupData }}
+    <div class="modal note-modal">
+        <h3 class="modal__title">Note form</h3>
         <form action="" class="form" @submit.prevent="addNote">
             <div class="form-group">
                 <div class="form__title">
@@ -29,6 +28,7 @@
                 </div>
             </div>
             <input type="submit" value="Submit" class="form__submit">
+            <a href="" class="modal__close" @click.prevent="closeModal"></a>
         </form>
     </div>
 </template>
@@ -40,7 +40,7 @@
 
     export default {
         props: {
-          popupData: Object
+            popupData: Object
         },
         data() {
             return {
@@ -68,7 +68,7 @@
         },
         methods: {
             ...mapActions(['postNote']),
-            ...mapMutations(['toggleModalMessage']),
+            ...mapMutations(['toggleModalMessage', 'closeModalForm']),
             addNote() {
                 let that = this;
                 if(this.note.title.trim() && this.note.text.trim() && this.selected !== 'default') {
@@ -86,9 +86,13 @@
 
                     that.postNote(newNote);
                     that.toggleModalMessage('Note has been submitted');
-                     that.selected = 'default';
+                    that.selected = 'default';
                     that.note.title = that.note.text = '';
+                    that.closeModal();
                 }
+            },
+            closeModal() {
+                this.closeModalForm();
             }
         }
     }

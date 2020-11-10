@@ -10,8 +10,10 @@
 
     export default {
         components: {
-            ModalNote: () => import('./ModalNote.vue'),
-            ModalCategory: () => import('./ModalCategory.vue'),
+            ModalAddNote: () => import('../Modals/ModalAddNote.vue'),
+            ModalAddCategory: () => import('../Modals/ModalAddCategory.vue'),
+            ModalEditNote: () => import('../Modals/ModalEditNote.vue'),
+            ModalEditCategory: () => import('../Modals/ModalEditCategory.vue'),
         },
         computed: {
             ...mapGetters(['modalForm'])

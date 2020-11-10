@@ -74,7 +74,7 @@
         },
         methods: {
             ...mapActions(['deleteCategory', 'updateFavouriteNote', 'deleteNote', 'moveCategoryToTrash', 'moveNoteToTrash']),
-            ...mapMutations(['removeNotesByCategory', 'setPopupComponent', 'toggleModalMessage', 'toggleModalForm']),
+            ...mapMutations(['removeNotesByCategory', 'toggleModalMessage', 'toggleModalForm']),
             removeCategory(id) {
                 this.moveCategoryToTrash(id);
                 this.$router.push('/categories');
@@ -88,7 +88,7 @@
             editCategory(category) {
                 this.toggleModalForm(
                     {
-                        component: 'ModalCategory',
+                        component: 'ModalEditCategory',
                         data: category
                     }
                 );

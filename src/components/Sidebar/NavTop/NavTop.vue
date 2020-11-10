@@ -5,10 +5,10 @@
             <h1>Notebook App</h1>
         </div>
         <div class="nav-top__buttons">
-            <button class="nav-top__btn j-popup popup-note" title="Add note" @click="getPopupToggler">
+            <button class="nav-top__btn" title="Add note" @click="addNote">
                 <i></i>
             </button>
-            <button class="nav-top__btn j-popup popup-category" title="Add category" @click="getPopupToggler">
+            <button class="nav-top__btn" title="Add category" @click="addCategory">
                 <i></i>
             </button>
         </div>
@@ -21,12 +21,20 @@
 
     export default {
         methods: {
-            ...mapMutations(['setPopupComponent']),
-            getPopupToggler(e) {
-                let closest = e.target.closest('.j-popup');
-                if(closest) {
-                   this.setPopupComponent(closest);
-                }
+            ...mapMutations(['toggleModalForm']),
+            addNote() {
+                this.toggleModalForm(
+                    {
+                        component: 'ModalAddNote', data: {}
+                    }
+                );
+            },
+            addCategory() {
+                this.toggleModalForm(
+                    {
+                        component: 'ModalAddCategory', data: {}
+                    }
+                );
             }
         }
     }

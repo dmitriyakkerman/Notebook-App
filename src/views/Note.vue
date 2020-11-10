@@ -39,11 +39,11 @@
         },
         methods: {
             ...mapActions(['deleteNote', 'updateFavouriteNote']),
-            ...mapMutations(['setPopupComponent', 'toggleModalMessage', 'toggleModalForm']),
+            ...mapMutations(['toggleModalMessage', 'toggleModalForm']),
             editNote(note) {
                 this.toggleModalForm(
                     {
-                        component: 'ModalNote', data: note
+                        component: 'ModalEditNote', data: note
                     }
                 );
             },
