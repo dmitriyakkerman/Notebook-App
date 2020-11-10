@@ -27,7 +27,7 @@
         },
         methods: {
             ...mapActions(['postCategory']),
-            ...mapMutations(['toggleModal', 'setModalMessage']),
+            ...mapMutations(['toggleModalMessage']),
             addCategory() {
                 let that = this;
                 if(this.category.title.trim()) {
@@ -37,8 +37,7 @@
                     };
 
                     that.postCategory(newCategory);
-                    that.toggleModal();
-                    that.setModalMessage('Category has been submitted');
+                    that.toggleModalMessage('Category has been submitted');
                     that.category.title = '';
                 }
             }

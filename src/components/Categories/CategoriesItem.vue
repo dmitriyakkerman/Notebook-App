@@ -24,19 +24,17 @@
         },
         methods: {
             ...mapActions(['restoreNotesByCategory', 'moveCategoryFromTrash', 'deleteCategory', 'moveCategoryToTrash', 'removeNotesByCategory']),
-            ...mapMutations(['toggleModal', 'setModalMessage']),
+            ...mapMutations(['toggleModalMessage']),
             removeCategory(id) {
                 this.moveCategoryToTrash(id);
                 this.deleteCategory(id);
                 this.removeNotesByCategory(id);
-                this.toggleModal();
-                this.setModalMessage('Category has been moved to trash');
+                this.toggleModalMessage('Category has been moved to trash');
             },
             restoreCategory(category) {
                 this.restoreNotesByCategory(category);
                 this.moveCategoryFromTrash(category);
-                this.toggleModal();
-                this.setModalMessage('Category has been restored from trash');
+                this.toggleModalMessage('Category has been restored from trash');
             }
         }
     }

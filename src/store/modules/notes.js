@@ -37,6 +37,9 @@ export default {
         updateFavouriteNote({commit}, id) {
             commit('makeNoteFavourite', id)
         },
+        updateEditedNote({commit}, editedNote) {
+            commit('updateEditedNote', editedNote)
+        },
         deleteNote({commit}, id) {
             commit('removeNote', id)
         },
@@ -71,6 +74,17 @@ export default {
             });
 
             localStorage.setItem('notes', JSON.stringify(state.notes))
+        },
+        updateEditedNote(state, editedNote) {
+            state.notes = state.notes.map(function (note) {
+                if(editedNote.id === note.id) {
+                    note = editedNote
+                }
+
+                return note;
+            });
+
+            localStorage.setItem('notes', JSON.stringify(state.notes));
         },
         removeNote(state, id) {
             state.notes = state.notes.filter(function (note) {

@@ -5,8 +5,8 @@ export default {
         }
     },
     getters: {
-        popupForm(state) {
-            return state.popupForm
+        popupType(state) {
+            return state.popupForm.type
         }
     },
     mutations: {

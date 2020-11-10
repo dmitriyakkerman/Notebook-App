@@ -32,23 +32,21 @@
         },
         methods: {
             ...mapActions(['updateFavouriteNote', 'deleteNote', 'moveNoteToTrash', 'moveNoteFromTrash', 'restoreCategoryByNote']),
-            ...mapMutations(['setPopupComponent', 'toggleModal', 'setModalMessage']),
+            ...mapMutations(['setPopupComponent', 'toggleModalMessage']),
             makeFavourite(id, $event) {
                 this.updateFavouriteNote(id);
-                this.toggleModal();
 
                 if($event.target.classList.contains('active')) {
-                    this.setModalMessage('Note has been removed from favourites');
+                    this.toggleModalMessage('Note has been removed from favourites');
                 }
                 else {
-                    this.setModalMessage('Note has been added to favourites');
+                    this.toggleModalMessage('Note has been added to favourites');
                 }
             },
             removeNote(id) {
                 this.moveNoteToTrash(id);
                 this.deleteNote(id);
-                this.toggleModal();
-                this.setModalMessage('Note has been moved to trash');
+                this.toggleModalMessage('Note has been moved to trash');
             },
             addNote(e) {
                 let closest = e.target.closest('.j-popup');
@@ -60,8 +58,7 @@
             restoreNote(note) {
                 this.restoreCategoryByNote(note);
                 this.moveNoteFromTrash(note);
-                this.toggleModal();
-                this.setModalMessage('Note has been restored from trash');
+                this.toggleModalMessage('Note has been restored from trash');
             }
         }
     }

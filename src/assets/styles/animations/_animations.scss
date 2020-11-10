@@ -1,3 +1,12 @@
+.slideUp-enter-active, .slideUp-leave-active {
+  transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.slideUp-enter, .slideUp-leave-to {
+  top: -100%;
+  opacity: 0;
+}
+
 .slideDown-enter-active, .slideDown-leave-active {
   transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }

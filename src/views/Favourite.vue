@@ -59,7 +59,7 @@
                     }
                 });
 
-                return filteredNotes.filter(function (note) {
+                filteredNotes = filteredNotes.filter(function (note) {
                     let filtered;
 
                     if(that.selectedStatus === 'all') {
@@ -77,7 +77,18 @@
                     }
 
                     return filtered;
-                })
+                });
+
+                return filteredNotes.sort(function (a, b) {
+                    if (a.title < b.title) {
+                        return -1
+                    }
+                    if (a.title > b.title) {
+                        return 1
+                    }
+
+                    return 0
+                });
             },
             makeFavourite(id) {
                 this.updateFavouriteNote(id)

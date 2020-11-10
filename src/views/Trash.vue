@@ -66,7 +66,7 @@
         },
         methods: {
             ...mapActions(['cleanNotesTrash', 'cleanCategoriesTrash']),
-            ...mapMutations(['toggleModal', 'setModalMessage']),
+            ...mapMutations(['toggleModalMessage']),
             filteredNotes(notes) {
                 let that = this;
                 let filteredNotes;
@@ -80,7 +80,7 @@
                     }
                 });
 
-                return filteredNotes.filter(function (note) {
+                filteredNotes = filteredNotes.filter(function (note) {
                     let filtered;
 
                     if(that.selectedStatus === 'all') {
@@ -99,12 +99,22 @@
 
                     return filtered;
                 });
+
+                return filteredNotes.sort(function (a, b) {
+                    if (a.title < b.title) {
+                        return -1
+                    }
+                    if (a.title > b.title) {
+                        return 1
+                    }
+
+                    return 0
+                });
             },
             cleanTrash() {
                 this.cleanNotesTrash();
                 this.cleanCategoriesTrash();
-                this.toggleModal();
-                this.setModalMessage('Trash box has been cleared');
+                this.toggleModalMessage('Trash box has been cleared');
             },
             statusValue(value) {
                 this.selectedStatus = value

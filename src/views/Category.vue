@@ -7,7 +7,7 @@
                     <SelectStatus :selected="selectedStatus" @statusValue="statusValue"></SelectStatus>
                 </form>
                 <div class="main-bar__buttons">
-                    <button class="main-bar__edit j-popup popup-category" title="Edit category" @click="editCategory(category.id, $event)"></button>
+                    <button class="main-bar__edit" title="Edit category" @click="editCategory(category)"></button>
                     <button class="main-bar__remove" title="Remove category" @click="removeCategory(category.id)"></button>
                 </div>
             </div>
@@ -74,29 +74,28 @@
         },
         methods: {
             ...mapActions(['deleteCategory', 'updateFavouriteNote', 'deleteNote', 'moveCategoryToTrash', 'moveNoteToTrash']),
-            ...mapMutations(['removeNotesByCategory', 'setPopupComponent', 'toggleModal', 'setModalMessage']),
+            ...mapMutations(['removeNotesByCategory', 'setPopupComponent', 'toggleModalMessage', 'toggleModalForm']),
             removeCategory(id) {
                 this.moveCategoryToTrash(id);
                 this.$router.push('/categories');
                 this.deleteCategory(id);
                 this.removeNotesByCategory(id);
-                this.toggleModal();
-                this.setModalMessage('Category has been moved to trash');
+                this.toggleModalMessage('Category has been moved to trash');
             },
             makeFavourite(id) {
                 this.updateFavouriteNote(id)
             },
+            editCategory(category) {
+                this.toggleModalForm(
+                    {
+                        component: 'ModalCategory',
+                        data: category
+                    }
+                );
+            },
             removeNote(id) {
                 this.moveNoteToTrash(id);
                 this.deleteNote(id);
-            },
-            editCategory(id, e) {
-                let closest = e.target.closest('.j-popup');
-                if(closest) {
-                    this.setPopupComponent(closest);
-                }
-
-                window.popup.manualOpen();
             },
             statusValue(value) {
                 this.selectedStatus = value

@@ -1,6 +1,7 @@
 <template>
     <div class="note-popup">
         <h3 class="popup__title">Note form</h3>
+        {{ popupData }}
         <form action="" class="form" @submit.prevent="addNote">
             <div class="form-group">
                 <div class="form__title">
@@ -38,9 +39,12 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
 
     export default {
+        props: {
+          popupData: Object
+        },
         data() {
             return {
-                selected: '',
+                selected: 'default',
                 note: {
                     title: '',
                     text: '',
@@ -60,14 +64,11 @@
                 });
 
                 return id;
-            },
-            popupData() {
-                return this.popupComponentData
             }
         },
         methods: {
             ...mapActions(['postNote']),
-            ...mapMutations(['toggleModal', 'setModalMessage']),
+            ...mapMutations(['toggleModalMessage']),
             addNote() {
                 let that = this;
                 if(this.note.title.trim() && this.note.text.trim() && this.selected !== 'default') {
@@ -84,9 +85,8 @@
                     };
 
                     that.postNote(newNote);
-                    that.toggleModal();
-                    that.setModalMessage('Note has been submitted');
-                    that.selected = 'default';
+                    that.toggleModalMessage('Note has been submitted');
+                     that.selected = 'default';
                     that.note.title = that.note.text = '';
                 }
             }

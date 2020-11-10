@@ -13,7 +13,7 @@
                 </div>
                 <div class="main-bar__buttons">
                     <button class="main-bar__favourite" :class="{active: note.favourite}" title="Make favourite" @click.prevent="makeFavourite(note.id, $event)"></button>
-                    <button class="main-bar__edit j-popup popup-note" title="Edit note" @click="editNote(note, $event)"></button>
+                    <button class="main-bar__edit" title="Edit note" @click="editNote(note)"></button>
                     <button class="main-bar__remove" title="Remove Note" @click="removeNote(note.id)"></button>
                 </div>
             </div>
@@ -39,32 +39,28 @@
         },
         methods: {
             ...mapActions(['deleteNote', 'updateFavouriteNote']),
-            ...mapMutations(['setPopupComponent', 'toggleModal', 'setModalMessage']),
+            ...mapMutations(['setPopupComponent', 'toggleModalMessage', 'toggleModalForm']),
+            editNote(note) {
+                this.toggleModalForm(
+                    {
+                        component: 'ModalNote', data: note
+                    }
+                );
+            },
             removeNote(id) {
                 this.$router.push('/notes');
                 this.deleteNote(id);
-                this.toggleModal();
-                this.setModalMessage('Note has been moved to trash');
+                this.toggleModalMessage('Note has been moved to trash');
             },
             makeFavourite(id, $event) {
                 this.updateFavouriteNote(id);
-                this.toggleModal();
 
                 if($event.target.classList.contains('active')) {
-                    this.setModalMessage('Note has been removed from favourites');
+                    this.toggleModalMessage('Note has been removed from favourites');
                 }
                 else {
-                    this.setModalMessage('Note has been added to favourites');
+                    this.toggleModalMessage('Note has been added to favourites');
                 }
-            },
-            editNote(note, e) {
-                let that = this;
-                let closest = e.target.closest('.j-popup');
-                if(closest) {
-                    that.setPopupComponent(closest);
-                }
-
-                window.popup.manualOpen();
             }
         }
     }

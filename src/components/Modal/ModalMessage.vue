@@ -1,6 +1,6 @@
 <template>
-    <h3 class="modal">
-        {{ modalMessage }}
+    <h3 class="modal-message">
+        {{ modalMessage.message }}
     </h3>
 </template>
 

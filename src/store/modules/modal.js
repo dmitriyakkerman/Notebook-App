@@ -1,28 +1,36 @@
 export default {
     state: {
-        modal: {
+        modalMessage: {
             isOpen: false,
             message: ''
+        },
+        modalForm: {
+            isOpen: false,
+            component: 'ModalNote',
+            data: {}
         }
     },
     getters: {
-        modalOpen(state) {
-            return state.modal.isOpen
-        },
         modalMessage(state) {
-            return state.modal.message
+            return state.modalMessage
+        },
+        modalForm(state) {
+            return state.modalForm
         }
     },
     mutations: {
-        toggleModal(state) {
-            state.modal.isOpen = true;
+        toggleModalMessage(state, message) {
+            state.modalMessage.isOpen = true;
+            state.modalMessage.message = message;
 
             setTimeout(() => {
-                state.modal.isOpen = false;
+                state.modalMessage.isOpen = false;
             }, 3000)
         },
-        setModalMessage(state, message) {
-            state.modal.message = message
+        toggleModalForm(state, data) {
+            state.modalForm.isOpen = !state.modalForm.isOpen;
+            state.modalForm.component = data.component;
+            state.modalForm.data = data.data;
         }
     }
 }

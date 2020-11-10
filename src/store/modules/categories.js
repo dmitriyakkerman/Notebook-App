@@ -22,6 +22,9 @@ export default {
         postCategory({commit}, newCategory) {
             commit('addCategory', newCategory)
         },
+        updateEditedCategory({commit}, editedCategory) {
+            commit('updateEditedCategory', editedCategory)
+        },
         deleteCategory({commit}, id) {
             commit('removeCategory', id)
         },
@@ -41,6 +44,17 @@ export default {
     mutations: {
         addCategory(state, newCategory) {
             state.categories.push(newCategory);
+            localStorage.setItem('categories', JSON.stringify(state.categories));
+        },
+        updateEditedCategory(state, editedCategory) {
+            state.categories = state.categories.map(function (category) {
+                if(editedCategory.id === category.id) {
+                    category = editedCategory
+                }
+
+                return category;
+            });
+
             localStorage.setItem('categories', JSON.stringify(state.categories));
         },
         removeCategory(state, id) {

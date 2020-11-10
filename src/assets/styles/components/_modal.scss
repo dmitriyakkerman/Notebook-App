@@ -1,4 +1,4 @@
-.modal {
+.modal-message {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -9,9 +9,16 @@
   z-index: 999;
 }
 
+.modal-form {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+}
+
 @media(max-width: 991px) {
 
-  .modal {
+  .modal-message {
     left: 50%;
     right: inherit;
     transform: translateX(-50%);

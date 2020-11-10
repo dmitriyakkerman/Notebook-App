@@ -1,7 +1,7 @@
 <template>
     <div class="popup">
         <div>
-            <component :is="popupComponent"></component>
+            <component :is="popupType"></component>
         </div>
     </div>
 </template>
@@ -19,10 +19,7 @@
             CategoryPopup
         },
         computed: {
-            ...mapGetters(['popupForm']),
-          popupComponent() {
-              return this.popupForm.type
-          }
+            ...mapGetters(['popupType'])
         },
         mounted() {
             let popup = new window.ArmUI.Popup({
