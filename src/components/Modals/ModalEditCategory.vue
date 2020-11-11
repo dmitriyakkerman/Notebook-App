@@ -23,7 +23,7 @@
     export default {
         props: ['modalForm'],
         methods: {
-            ...mapActions(['updateEditedCategory']),
+            ...mapActions(['updateEditedCategory', 'updateNoteByCategory']),
             ...mapMutations(['toggleModalMessage', 'closeModalForm']),
             saveCategory() {
                 let editedCategory = {
@@ -32,6 +32,7 @@
                 };
 
                 this.updateEditedCategory(editedCategory);
+                this.updateNoteByCategory(editedCategory);
                 this.toggleModalMessage('Category has been edited');
                 this.closeModal();
             },

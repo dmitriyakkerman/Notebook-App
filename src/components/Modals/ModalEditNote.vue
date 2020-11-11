@@ -12,6 +12,7 @@
                 <div class="form-group">
                     <div class="form__select">
                         <label for="note-select">Note category</label>
+                        {{modalForm.category.title}}
                         <select id="note-select" v-model="modalForm.category.title" ref="category">
                             <option disabled value="default">Choose category</option>
                             <option v-for="category in categories" :key="category.id" :value="category.title">{{category.title}}</option>
@@ -25,7 +26,7 @@
                 <div class="form-group">
                     <div class="form__text">
                         <label for="note-text">Note text</label>
-                        <textarea id="note-text" v-model="modalForm.text" ref="text"></textarea>
+                        <textarea id="note-text" v-model="strippedText" ref="text"></textarea>
                     </div>
                 </div>
                 <input type="submit" value="Submit" class="form__submit">
@@ -38,11 +39,15 @@
 <script>
 
     import {mapGetters, mapActions, mapMutations} from 'vuex'
+    import marked from 'marked'
 
     export default {
         props: ['modalForm'],
         computed: {
-            ...mapGetters(['categories'])
+            ...mapGetters(['categories']),
+            strippedText() {
+                return this.modalForm.text.replace(/<\/?[^>]+>/ig, "")
+            }
         },
         methods: {
             ...mapActions(['updateEditedNote']),
@@ -51,7 +56,7 @@
                 let editedNote = {
                     id: this.modalForm.id,
                     title: this.$refs.title.value,
-                    text: this.$refs.text.value,
+                    text: marked(this.$refs.text.value),
                     deadline: this.$refs.deadline.value,
                     favourite: this.modalForm.favourite,
                     category: {

@@ -49,6 +49,9 @@ export default {
         moveNoteFromTrash({commit}, note) {
             commit('moveNoteFromTrash', note)
         },
+        updateNoteByCategory({commit}, category) {
+          commit('updateNoteByCategory', category)
+        },
         removeNotesByCategory({commit}, id) {
             commit('removeNotesByCategory', id)
         },
@@ -114,6 +117,17 @@ export default {
           });
 
           localStorage.setItem('notesTrash', JSON.stringify(state.notesTrash));
+        },
+        updateNoteByCategory(state, category) {
+            state.notes = state.notes.map(function (note) {
+                if(note.category.id === category.id) {
+                    note.category.title = category.title
+                }
+
+                return note
+            });
+
+            localStorage.setItem('notes', JSON.stringify(state.notes))
         },
         removeNotesByCategory(state, id) {
             state.notes = state.notes.filter(function (note) {
