@@ -1,16 +1,18 @@
 <template>
     <div class="modal category-modal">
-        <h3 class="modal__title">Category form</h3>
-        <form action="" class="form" @submit.prevent="addCategory">
-            <div class="form-group">
-                <div class="form__title">
-                    <label for="category-title">Category title</label>
-                    <input type="text" id="category-title" class="form__title" v-model="category.title">
+        <div class="modal__container">
+            <h3 class="modal__title">Category form</h3>
+            <form action="" class="form" @submit.prevent="addCategory">
+                <div class="form-group">
+                    <div class="form__title">
+                        <label for="category-title">Category title</label>
+                        <input type="text" id="category-title" class="form__title" v-model="category.title">
+                    </div>
                 </div>
-            </div>
-            <input type="submit" class="form__submit" value="Submit">
-            <a href="" class="modal__close" @click.prevent="closeModal"></a>
-        </form>
+                <input type="submit" class="form__submit" value="Submit">
+                <a href="" class="modal__close" @click.prevent="closeModal"></a>
+            </form>
+        </div>
     </div>
 </template>
 

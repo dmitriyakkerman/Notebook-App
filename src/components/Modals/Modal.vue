@@ -1,12 +1,12 @@
 <template>
-    <transition name="slideUp">
-        <component v-if="modalForm.isOpen" :is="modalForm.component" :modalForm="modalForm.data"></component>
+    <transition name="appear">
+        <component v-if="modalForm.isOpen" :is="modalForm.component" :modalForm="modalForm.data" @click.native="bodyClose($event)"></component>
     </transition>
 </template>
 
 <script>
 
-    import {mapGetters} from 'vuex'
+    import {mapGetters, mapMutations} from 'vuex'
 
     export default {
         components: {
@@ -17,6 +17,14 @@
         },
         computed: {
             ...mapGetters(['modalForm'])
+        },
+        methods: {
+            ...mapMutations(['closeModalForm']),
+            bodyClose(e) {
+               if(!e.target.closest('.modal__container')) {
+                   this.closeModalForm();
+               }
+            }
         }
     }
 
