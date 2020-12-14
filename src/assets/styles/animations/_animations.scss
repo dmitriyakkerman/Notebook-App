@@ -24,6 +24,14 @@
   opacity: 0;
 }
 
+.fadeIn-enter-active, .fadeIn-leave-active {
+  transition: opacity .7s;
+}
+
+.fadeIn-enter, .fadeIn-leave-to {
+  opacity: 0;
+}
+
 .no-results-enter-active, .no-results-leave-active {
   transition: all .3s .3s;
 }
